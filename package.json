@@ -1,0 +1,9 @@
+{
+  "name": "gatsby-theme-stripe",
+  "private": true,
+  "author": "Nick DeJesus",
+  "workspaces": [
+    "examples/*",
+    "packages/*"
+  ]
+}
