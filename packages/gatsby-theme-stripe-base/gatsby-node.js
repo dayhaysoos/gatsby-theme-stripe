@@ -78,15 +78,17 @@ exports.onCreateNode = async ({
 }
 
 // grab sku data from stripe api
-exports.sourceNodes = async (
-  { actions, createNodeId, createContentDigest, reporter },
-  themeOptions
-) => {
+exports.sourceNodes = async ({
+  actions,
+  createNodeId,
+  createContentDigest,
+  reporter,
+}) => {
   const result = await axios({
     method: 'GET',
     url: 'https://api.stripe.com/v1/skus',
     headers: {
-      Authorization: `Bearer ${themeOptions.stripeSecretKey}`,
+      Authorization: `Bearer ${process.env.STRIPE_API_SECRET}`,
     },
   })
 
@@ -94,7 +96,7 @@ exports.sourceNodes = async (
     method: 'GET',
     url: 'https://api.stripe.com/v1/plans',
     headers: {
-      Authorization: `Bearer ${themeOptions.stripeSecretKey}`,
+      Authorization: `Bearer ${process.env.STRIPE_API_SECRET}`,
     },
   })
 
