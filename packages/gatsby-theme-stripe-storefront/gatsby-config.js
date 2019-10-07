@@ -10,7 +10,7 @@ module.exports = {
     {
       resolve: 'gatsby-theme-stripe-base',
       options: {
-        stripePublicKey: 'test',
+        stripePublicKey: process.env.STRIPE_API_PUBLIC,
       },
     },
     {
