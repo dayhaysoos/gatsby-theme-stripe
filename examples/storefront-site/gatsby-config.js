@@ -1,15 +1,14 @@
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`
-});
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 module.exports = {
   plugins: [
-    "gatsby-theme-stripe-storefront",
     {
-      resolve: "gatsby-theme-stripe-base",
+      resolve: 'gatsby-theme-stripe-storefront',
       options: {
-        stripePublicKey: process.env.STRIPE_API_PUBLIC
-      }
-    }
-  ]
-};
+        stripePublicKey: process.env.STRIPE_API_PUBLIC,
+      },
+    },
+  ],
+}
