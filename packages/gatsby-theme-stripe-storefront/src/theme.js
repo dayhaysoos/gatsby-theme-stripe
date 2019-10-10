@@ -1,4 +1,4 @@
-export const theme = {
+const theme = {
   space: [0, 4, 8, 1, 32],
   fonts: {
     body: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
