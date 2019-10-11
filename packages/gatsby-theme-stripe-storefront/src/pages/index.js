@@ -9,7 +9,6 @@ import Copy from '../components/copy'
 import strings from '../strings.json'
 
 const App = () => {
-  console.log(strings)
   return (
     <Layout>
       <Copy copy={strings.storefront} />
