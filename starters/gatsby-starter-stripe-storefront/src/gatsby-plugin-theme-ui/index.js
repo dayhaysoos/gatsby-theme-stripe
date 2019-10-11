@@ -5,6 +5,6 @@ export default merge(baseTheme, {
   colors: {
     primary: baseTheme.colors.primary,
     secondary: baseTheme.colors.secondary,
-    accdent: baseTheme.colors.accent,
+    accent: baseTheme.colors.accent,
   },
 })
