@@ -4,6 +4,7 @@
   "author": "Nick DeJesus",
   "workspaces": [
     "examples/*",
-    "packages/*"
+    "packages/*",
+    "starters/*"
   ]
 }

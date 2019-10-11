@@ -40,10 +40,8 @@ const theme = {
       display: 'flex',
       flexDirection: 'column',
       color: 'primary',
-      justifyContent: 'center',
-      margin: '0 auto',
       backgroundColor: 'background',
-      textAlign: 'center',
+      alignItems: 'center',
     },
     Container: {
       padding: 3,

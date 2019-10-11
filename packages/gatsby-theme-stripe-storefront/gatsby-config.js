@@ -16,8 +16,15 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'image',
+        name: 'pages',
         path: `${__dirname}/src/pages/`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: `${__dirname}/src/images/`,
       },
     },
     {
@@ -40,7 +47,7 @@ module.exports = {
     titleTemplate: 'Gatsby Theme Stripe Base',
     description: 'JAMStack solutions for your e-commerce Stripe stores!',
     url: 'https://www.twitter.com/dayhaysoos', // No trailing slash allowed!
-    image: '/images/snape.jpg', // Path to your image you placed in the 'static' folder
+    image: '../images/logo.jpeg',
     socialAccounts: [
       {
         platform: 'twitter',
