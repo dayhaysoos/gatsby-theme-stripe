@@ -1,0 +1,39 @@
+{
+  "name": "gatsby-theme-stripe-landing",
+  "version": "1.1.0",
+  "author": {
+    "name": "Nick DeJesus",
+    "url": "https://www.twitter.com/dayhaysoos",
+    "email": "ndejesus1227@gmail.com"
+  },
+  "scripts": {
+    "build": "gatsby build",
+    "clean": "gatsby clean",
+    "develop": "gatsby develop"
+  },
+  "devDependencies": {
+    "gatsby": "^2.15.15",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.13.68",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.17",
+    "@emotion/styled": "^10.0.17",
+    "@material-ui/core": "^4.4.3",
+    "@material-ui/styles": "^4.4.3",
+    "@mdx-js/react": "^1.5.1",
+    "gatsby-plugin-material-ui": "^2.1.6",
+    "gatsby-plugin-page-creator": "^2.1.25",
+    "gatsby-plugin-react-helmet": "^3.1.11",
+    "gatsby-plugin-theme-ui": "^0.2.41",
+    "gatsby-source-filesystem": "^2.1.31",
+    "react-helmet": "^5.2.1",
+    "react-icons": "^3.7.0",
+    "theme-ui": "^0.2.44"
+  }
+}
