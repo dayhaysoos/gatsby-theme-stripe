@@ -4,7 +4,7 @@ import { jsx } from 'theme-ui'
 import Container from '@material-ui/core/Container'
 import heroImage from '../images/hero-image.jpg'
 
-const Hero = () => {
+const HeroImage = () => {
   return (
     <Container>
       <h1>Hero!</h1>
@@ -13,4 +13,4 @@ const Hero = () => {
   )
 }
 
-export default Hero
+export default HeroImage
