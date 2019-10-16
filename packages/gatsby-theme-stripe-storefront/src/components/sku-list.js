@@ -42,26 +42,28 @@ const SkuList = () => {
   const skus = data.allStripeSku.nodes
 
   return (
-    <Card sx={{ variant: 'ul.skuList' }}>
+    <section sx={{ variant: 'ul.skuList' }}>
       {skus.map(sku => {
         const { localImage, name, skuID, price } = sku
 
         return (
-          <CardContent key={skuID} sx={{ variant: 'li.purchaseItem' }}>
-            <section sx={{ variant: 'section.itemDetails' }}>
-              <div css={{ maxHeight: '200px', height: '200px' }}>
-                <SkuImage size={200} image={localImage} name={name} />
-              </div>
-              <p>{name}</p>
-              <p>{price}</p>
-            </section>
-            <section sx={{ variant: 'section.buttonWrapper' }}>
-              <AddItemButton sku={sku} />
-            </section>
-          </CardContent>
+          <Card key={skuID} sx={{ variant: 'li.purchaseItem' }}>
+            <CardContent>
+              <section sx={{ variant: 'section.itemDetails' }}>
+                <div css={{ maxHeight: '200px', height: '200px' }}>
+                  <SkuImage size={200} image={localImage} name={name} />
+                </div>
+                <p>{name}</p>
+                <p>{price}</p>
+              </section>
+              <section sx={{ variant: 'section.buttonWrapper' }}>
+                <AddItemButton sku={sku} />
+              </section>
+            </CardContent>
+          </Card>
         )
       })}
-    </Card>
+    </section>
   )
 }
 
