@@ -51,7 +51,28 @@ const theme = {
     img: {
       height: 'auto',
       width: '100%',
-      minWidth: '200px',
+    },
+  },
+  container: {
+    main: {
+      marginTop: '20px',
+      marginBottom: '20px',
+      backgroundColor: 'transparent',
+    },
+    alt: {
+      marginTop: '20px',
+      marginBottom: '20px',
+      backgroundColor: 'primary',
+    },
+  },
+  paper: {
+    main: {
+      padding: '30px',
+      color: 'primary',
+    },
+    alt: {
+      padding: '30px',
+      color: 'secondary',
     },
   },
 }
