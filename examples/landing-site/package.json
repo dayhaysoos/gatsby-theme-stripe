@@ -10,7 +10,7 @@
   "dependencies": {
     "deepmerge": "^4.1.1",
     "gatsby": "^2.15.15",
-    "gatsby-theme-stripe-landing": "*",
+    "gatsby-theme-landing-components": "*",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   }

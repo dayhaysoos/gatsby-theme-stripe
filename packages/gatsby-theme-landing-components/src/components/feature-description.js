@@ -1,10 +1,10 @@
 // @jsx jsx
 import React from 'react'
 import { jsx } from 'theme-ui'
-import Container from '../components/container'
+import Container from './container'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
-import DescriptionHeader from '../components/description-header'
+import DescriptionHeader from './description-header'
 
 const FeatureDescription = ({
   fontSize = '16px',

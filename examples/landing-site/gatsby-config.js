@@ -3,5 +3,5 @@ require('dotenv').config({
 })
 
 module.exports = {
-  plugins: ['gatsby-theme-stripe-landing'],
+  plugins: ['gatsby-theme-landing-components'],
 }

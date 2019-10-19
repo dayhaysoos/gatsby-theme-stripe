@@ -1,7 +1,7 @@
 // @jsx jsx
 import React from 'react'
 import { jsx } from 'theme-ui'
-import Container from '../components/container'
+import Container from './container'
 import heroImage from '../images/hero-image.jpg'
 
 const Image = ({ maxWidth = '' }) => {
