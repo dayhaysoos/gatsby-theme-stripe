@@ -1,4 +1,5 @@
-import React, { createContext, useReducer, useContext } from 'react'
+import React, { createContext, useReducer, useContext, useEffect } from 'react'
+import { useLocalStorage } from 'react-use'
 import { useStaticQuery, graphql } from 'gatsby'
 
 const formatPrice = num => {
@@ -76,25 +77,21 @@ const reducer = (cart, action) => {
 
   switch (action.type) {
     case 'addItem':
-      localStorage.setItem('skus', JSON.stringify(buildCart(skus, action.sku)))
       return {
         ...cart,
         skus: buildCart(skus, action.sku),
       }
     case 'handleQuantityChange':
-      localStorage.setItem(
-        'skus',
-        JSON.stringify(updateQuantity(action.quantity, action.skuID, skus))
-      )
       return {
         ...cart,
         skus: updateQuantity(action.quantity, action.skuID, skus),
       }
     case 'delete':
-      localStorage.setItem(
-        'skus',
-        JSON.stringify(removeSku(action.skuID, skus))
-      )
+      typeof localStorage !== 'undefined' &&
+        localStorage.setItem(
+          'skus',
+          JSON.stringify(removeSku(action.skuID, skus))
+        )
       return {
         ...cart,
         skus: removeSku(action.skuID, skus),
@@ -122,9 +119,9 @@ export const CartContext = createContext()
 
 export const CartProvider = ({ children, stripe }) => {
   const skuStorage =
-    typeof window !== 'undefined'
+    typeof window !== 'undefined' || typeof localStorage !== 'undefined'
       ? JSON.parse(localStorage.getItem('skus'))
-      : null
+      : {}
   return (
     <CartContext.Provider
       value={useReducer(reducer, {
@@ -172,9 +169,30 @@ export const useCart = () => {
     }
   `)
 
+  const [storageReference, setStorageReference] = useLocalStorage(
+    'skus',
+    !JSON.parse(localStorage.getItem('skus')) && {}
+  )
+
+  useEffect(() => {
+    console.log(storageReference)
+  })
+
   const itemReference = data.allStripeSku.nodes
 
-  let storageReference = JSON.parse(localStorage.getItem('skus'))
+  // let storageReference =
+  //   typeof localStorage === 'object'
+  //     ? JSON.parse(localStorage.getItem('skus'))
+  //     : {}
+
+  // if (typeof localStorage !== 'undefined') {
+  //   storageReference = {}
+  // } else if (
+  //   typeof localStorage === 'object' &&
+  //   JSON.parse(localStorage.getItem('skus'))
+  // ) {
+  //   storageReference = JSON.parse(localStorage.getItem('skus'))
+  // }
 
   const [cart, dispatch] = useContext(CartContext)
 
@@ -187,15 +205,19 @@ export const useCart = () => {
     0
   )
 
-  Object.keys(storageReference).forEach(storageSku => {
-    itemReference.forEach(
-      itemSku =>
-        !itemSku.skuID.includes(storageSku) &&
-        delete storageReference[storageSku]
-    )
-  })
+  // Object.keys(storageReference).forEach(storageSku => {
+  //   itemReference.forEach(
+  //     itemSku =>
+  //       !itemSku.skuID.includes(storageSku) &&
+  //       setStorageReference(delete storageReference[storageSku])
+  //   )
+  // })
 
-  localStorage.setItem('skus', JSON.stringify(storageReference))
+  // typeof localStorage !== 'undefined' &&
+  //   localStorage.setItem('skus', JSON.stringify(storageReference))
+
+  // typeof localStorage !== 'undefined' &&
+  //   setStorageReference(JSON.stringify(storageReference))
 
   const detailedCart = formatDetailedCart(
     itemReference,
@@ -207,8 +229,9 @@ export const useCart = () => {
 
   const addItem = sku => dispatch({ type: 'addItem', sku })
 
-  const handleQuantityChange = (quantity, skuID) =>
+  const handleQuantityChange = (quantity, skuID) => {
     dispatch({ type: 'handleQuantityChange', quantity, skuID })
+  }
 
   const deleteItem = skuID => dispatch({ type: 'delete', skuID })
 
