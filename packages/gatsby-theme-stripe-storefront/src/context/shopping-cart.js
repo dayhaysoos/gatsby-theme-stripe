@@ -1,5 +1,4 @@
-import React, { createContext, useReducer, useContext, useEffect } from 'react'
-import { useLocalStorage } from 'react-use'
+import React, { createContext, useReducer, useContext } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
 const formatPrice = num => {
@@ -77,11 +76,21 @@ const reducer = (cart, action) => {
 
   switch (action.type) {
     case 'addItem':
+      typeof localStorage !== 'undefined' &&
+        localStorage.setItem(
+          'skus',
+          JSON.stringify(buildCart(skus, action.sku))
+        )
       return {
         ...cart,
         skus: buildCart(skus, action.sku),
       }
     case 'handleQuantityChange':
+      typeof localStorage !== 'undefined' &&
+        localStorage.setItem(
+          'skus',
+          JSON.stringify(updateQuantity(action.quantity, action.skuID, skus))
+        )
       return {
         ...cart,
         skus: updateQuantity(action.quantity, action.skuID, skus),
@@ -119,7 +128,7 @@ export const CartContext = createContext()
 
 export const CartProvider = ({ children, stripe }) => {
   const skuStorage =
-    typeof window !== 'undefined' || typeof localStorage !== 'undefined'
+    typeof window !== 'undefined'
       ? JSON.parse(localStorage.getItem('skus'))
       : {}
   return (
@@ -169,60 +178,33 @@ export const useCart = () => {
     }
   `)
 
-  const [storageReference, setStorageReference] = useLocalStorage(
-    'skus',
-    !JSON.parse(localStorage.getItem('skus')) && {}
-  )
-
-  useEffect(() => {
-    console.log(storageReference)
-  })
-
-  const itemReference = data.allStripeSku.nodes
-
-  // let storageReference =
-  //   typeof localStorage === 'object'
-  //     ? JSON.parse(localStorage.getItem('skus'))
-  //     : {}
-
-  // if (typeof localStorage !== 'undefined') {
-  //   storageReference = {}
-  // } else if (
-  //   typeof localStorage === 'object' &&
-  //   JSON.parse(localStorage.getItem('skus'))
-  // ) {
-  //   storageReference = JSON.parse(localStorage.getItem('skus'))
-  // }
-
   const [cart, dispatch] = useContext(CartContext)
 
   const { skus, stripe, lastClicked, toggleRightMenu, cartDetails } = cart
 
+  const itemReference = data.allStripeSku.nodes
+
+  let storageReference =
+    typeof localStorage === 'object' && JSON.parse(localStorage.getItem('skus'))
+
+  if (storageReference === null) {
+    storageReference = {}
+  }
+
   const checkoutData = formatCart(skus)
 
-  const cartCount = checkoutData.reduce(
-    (acc, current) => acc + current.quantity,
-    0
-  )
-
-  // Object.keys(storageReference).forEach(storageSku => {
-  //   itemReference.forEach(
-  //     itemSku =>
-  //       !itemSku.skuID.includes(storageSku) &&
-  //       setStorageReference(delete storageReference[storageSku])
-  //   )
-  // })
-
-  // typeof localStorage !== 'undefined' &&
-  //   localStorage.setItem('skus', JSON.stringify(storageReference))
-
-  // typeof localStorage !== 'undefined' &&
-  //   setStorageReference(JSON.stringify(storageReference))
+  typeof localStorage === 'object' &&
+    localStorage.setItem('skus', JSON.stringify(storageReference))
 
   const detailedCart = formatDetailedCart(
     itemReference,
     checkoutData,
     cartDetails
+  )
+
+  const cartCount = checkoutData.reduce(
+    (acc, current) => acc + current.quantity,
+    0
   )
 
   const total = formatPrice(getTotal(detailedCart))
