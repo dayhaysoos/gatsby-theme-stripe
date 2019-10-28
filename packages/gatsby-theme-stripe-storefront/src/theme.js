@@ -315,8 +315,7 @@ const theme = {
   },
   field: {
     checkout: {
-      width: '50px',
-      textAlign: 'right',
+      width: '42px',
     },
     error: {
       color: 'red',
@@ -349,11 +348,10 @@ const theme = {
       width: '100%',
       padding: '8px',
       fontSize: '1.5em',
-      height: 'max',
       transition: 'all 1s ease',
       animation: 'fade-out 1s',
       backgroundColor: 'background',
-      boxShadow: '0 20px 10px',
+      boxShadow: '0 4px 10px',
       zIndex: 100,
       overflow: 'hidden',
       '@media (max-width: 680px)': {
@@ -368,11 +366,10 @@ const theme = {
       width: '40%',
       padding: '8px',
       fontSize: '1.5em',
-      height: 'max',
       transition: 'all 1s ease',
       backgroundColor: 'background',
       zIndex: 100,
-      boxShadow: '0 15px 10px',
+      boxShadow: '0 4px 10px',
       '@media (max-width: 900px)': {
         width: '75%',
       },

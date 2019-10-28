@@ -6,7 +6,7 @@ import CheckoutImage from '../right-pane/checkout-image'
 import { FaWindowClose } from 'react-icons/fa'
 import { Formik, FieldArray, Field, Form } from 'formik'
 import * as Yup from 'yup'
-import Button from '@material-ui/core/Button'
+import { Button, Input } from '@material-ui/core'
 
 const ShoppingCartDetails = () => {
   const {
@@ -90,8 +90,9 @@ const ShoppingCartDetails = () => {
                               flexDirection: 'row',
                             }}
                           >
-                            <Field
+                            <Input
                               sx={{ variant: 'field.checkout' }}
+                              inputProps={{ style: { textAlign: 'center' } }}
                               type="number"
                               placeholder={'Enter Amount'}
                               name={name}
