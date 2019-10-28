@@ -179,7 +179,6 @@ const theme = {
       padding: 0,
       position: 'relative',
       backgroundColor: 'transparent',
-      height: '60px',
       width: '60px',
       cursor: 'pointer',
       transition: 'all .2s ease',
@@ -344,7 +343,6 @@ const theme = {
   aside: {
     rightPaneHidden: {
       position: 'fixed',
-      top: '0px',
       right: '-107%',
       display: 'flex',
       flexFlow: 'column nowrap',
@@ -364,7 +362,6 @@ const theme = {
     },
     rightPaneShow: {
       position: 'fixed',
-      top: '0px',
       right: '0',
       display: 'flex',
       flexFlow: 'column nowrap',

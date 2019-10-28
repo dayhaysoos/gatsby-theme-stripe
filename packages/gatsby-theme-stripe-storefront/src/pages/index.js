@@ -1,19 +1,14 @@
 /** @jsx jsx */
 import React from 'react'
-import { jsx } from 'theme-ui'
-import SkuList from '../components/sku-list'
-import SEO from '../components/SEO'
-import RightPane from '../components/right-pane'
+import { Layout as ThemeLayout, Main, jsx } from 'theme-ui'
+import Header from './header'
+import RightPane from './right-pane'
 
-const App = () => {
-  return (
-    <>
-      <SEO>
-        <RightPane />
-        <SkuList />
-      </SEO>
-    </>
-  )
-}
+const Layout = ({ children }) => (
+  <ThemeLayout>
+    <Header />
+    <Main>{children}</Main>
+  </ThemeLayout>
+)
 
-export default App
+export default Layout
