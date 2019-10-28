@@ -365,7 +365,7 @@ const theme = {
       right: '0',
       display: 'flex',
       flexFlow: 'column nowrap',
-      width: '75%',
+      width: '40%',
       padding: '8px',
       fontSize: '1.5em',
       height: 'max',
@@ -373,6 +373,9 @@ const theme = {
       backgroundColor: 'background',
       zIndex: 100,
       boxShadow: '0 15px 10px',
+      '@media (max-width: 900px)': {
+        width: '75%',
+      },
     },
   },
   cartDetails: {
