@@ -29,7 +29,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     id: ID!
     object: String
     attributes: Attribute
-    currencty: String!
+    currency: String!
     image: String
     metadata: MetaData!
     price: String!
