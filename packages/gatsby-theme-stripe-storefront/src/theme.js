@@ -14,6 +14,8 @@ const theme = {
     primary: 'rebeccapurple',
     secondary: '#339966',
     accent: '#ffdf37',
+    text: '#fff',
+    hightlight: 'yellow',
   },
   sizes: {
     default: '100%',
@@ -28,7 +30,7 @@ const theme = {
       overflowX: 'hidden',
     },
     Header: {
-      color: 'gray.0',
+      color: 'text',
       backgroundColor: 'primary',
       fontWeight: 'bold',
       margin: '0 auto',
@@ -71,7 +73,7 @@ const theme = {
       flexDirection: 'column',
       '&:focus-within, &:hover': {
         backgroundColor: 'primary',
-        color: 'gray.0',
+        color: 'text',
       },
     },
     p: {
@@ -98,7 +100,7 @@ const theme = {
       height: '24px',
       width: '24px',
       backgroundColor: 'accent',
-      color: 'primary',
+      color: 'text',
       fontSize: '.75rem',
     },
   },
@@ -163,7 +165,7 @@ const theme = {
     },
     cart: {
       backgroundColor: 'primary',
-      color: 'gray.0',
+      color: 'text',
       fontSize: '16px',
       '&:hover': {
         backgroundColor: 'secondary',
@@ -173,7 +175,7 @@ const theme = {
     },
     cartIcon: {
       display: 'flex',
-      color: 'gray.0',
+      color: 'text',
       border: 'none',
       justifyContent: 'center',
       padding: 0,
@@ -191,7 +193,7 @@ const theme = {
     },
     checkout: {
       backgroundColor: 'primary',
-      color: 'gray.0',
+      color: 'text',
       height: '40px',
       borderRadius: '10px',
       fontSize: '16px',
@@ -206,7 +208,7 @@ const theme = {
       },
       addRemove: {
         backgroundColor: 'primary',
-        color: 'gray.0',
+        color: 'text',
         fontSize: '18px',
         transition: 'all .5s ease',
         outline: 'none',
@@ -315,7 +317,8 @@ const theme = {
   },
   field: {
     checkout: {
-      width: '42px',
+      width: '50px',
+      textAlign: 'right',
     },
     error: {
       color: 'red',
@@ -348,10 +351,11 @@ const theme = {
       width: '100%',
       padding: '8px',
       fontSize: '1.5em',
+      height: 'max',
       transition: 'all 1s ease',
       animation: 'fade-out 1s',
       backgroundColor: 'background',
-      boxShadow: '0 4px 10px',
+      boxShadow: '0 20px 10px',
       zIndex: 100,
       overflow: 'hidden',
       '@media (max-width: 680px)': {
@@ -366,10 +370,11 @@ const theme = {
       width: '40%',
       padding: '8px',
       fontSize: '1.5em',
+      height: 'max',
       transition: 'all 1s ease',
       backgroundColor: 'background',
       zIndex: 100,
-      boxShadow: '0 4px 10px',
+      boxShadow: '0 15px 10px',
       '@media (max-width: 900px)': {
         width: '75%',
       },
