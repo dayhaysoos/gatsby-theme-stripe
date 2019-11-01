@@ -1,9 +1,8 @@
 /** @jsx jsx */
-import React from 'react'
 import { jsx } from 'theme-ui'
 import { useCart } from '../context/shopping-cart'
 import ShoppingCartDetails from './right-pane/shopping-cart-details'
-import { Input, Button } from '@material-ui/core'
+import { Button } from '@material-ui/core'
 
 const RightPane = () => {
   const {

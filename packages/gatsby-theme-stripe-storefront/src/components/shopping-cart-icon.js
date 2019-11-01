@@ -5,9 +5,10 @@ import { jsx } from 'theme-ui'
 import { FaShoppingCart } from 'react-icons/fa'
 
 const ShoppingCartIcon = () => {
-  const { cartCount, handleCartClick } = useCart()
+  const { cartCount, handleCartClick, handleCartHover } = useCart()
   return (
     <button
+      onMouseEnter={() => handleCartHover()}
       aria-label={'Shopping Cart'}
       onClick={handleCartClick}
       sx={{ variant: 'button.cartIcon' }}
