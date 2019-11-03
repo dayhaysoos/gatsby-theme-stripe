@@ -124,6 +124,12 @@ const reducer = (cart, action) => {
         toggleRightMenu: true,
       }
 
+    case 'closeCart':
+      return {
+        ...cart,
+        toggleRightMenu: false,
+      }
+
     default:
       console.error(`unknown action ${action.type}`)
       return cart
@@ -230,6 +236,8 @@ export const useCart = () => {
 
   const handleCartHover = () => dispatch({ type: 'cartHover' })
 
+  const handleCloseCart = () => dispatch({ type: 'closeCart' })
+
   const redirectToCheckout = async (submitType = 'auto') => {
     const { error } = await stripe.redirectToCheckout({
       items: checkoutData,
@@ -258,5 +266,6 @@ export const useCart = () => {
     detailedCart,
     total,
     handleCartHover,
+    handleCloseCart,
   }
 }
