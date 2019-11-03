@@ -67,7 +67,6 @@ const theme = {
       width: 'default',
     },
     li: {
-      padding: 2,
       margin: '20px 10px',
       display: 'flex',
       flexDirection: 'column',
@@ -133,7 +132,6 @@ const theme = {
       },
     },
     purchaseItem: {
-      padding: 2,
       margin: '20px 10px',
       display: 'flex',
       flexDirection: 'column',
@@ -145,6 +143,9 @@ const theme = {
       flexShrink: 1,
       flexBasis: '20%',
       '&:focus-within, &:hover': {},
+      '@media (max-width: 680px)': {
+        margin: '10px 0',
+      },
     },
   },
   button: {
