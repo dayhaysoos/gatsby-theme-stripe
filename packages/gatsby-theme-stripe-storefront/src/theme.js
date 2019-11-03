@@ -75,6 +75,9 @@ const theme = {
         backgroundColor: 'primary',
         color: 'text',
       },
+      '@media (max-width: 680px)': {
+        margin: '10px 0',
+      },
     },
     p: {
       color: 'gray.2',
@@ -286,6 +289,9 @@ const theme = {
       listStyle: 'none',
       minWidth: '40px',
       padding: 0,
+      '@media (max-width: 680px)': {
+        flexDirection: 'column',
+      },
     },
   },
   img: {
