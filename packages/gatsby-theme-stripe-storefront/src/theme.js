@@ -173,7 +173,6 @@ const theme = {
       backgroundColor: 'primary',
       color: 'text',
       fontSize: '16px',
-      marginTop: '20px',
       '&:hover': {
         backgroundColor: 'secondary',
         border: '1px solid',
@@ -290,6 +289,7 @@ const theme = {
       flexDirection: 'row',
       flexWrap: 'wrap',
       justifyContent: 'center',
+      alignItems: 'center',
       listStyle: 'none',
       minWidth: '40px',
       padding: 0,
