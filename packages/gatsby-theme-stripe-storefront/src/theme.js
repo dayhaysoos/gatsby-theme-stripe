@@ -132,15 +132,17 @@ const theme = {
       },
     },
     purchaseItem: {
+      backgroundColor: 'background',
       margin: '20px 10px',
       display: 'flex',
       flexDirection: 'column',
       transition: 'all .2s ease',
       justifyContent: 'center',
       alignItems: 'center',
-      maxWidth: 360,
+      maxWidth: 275,
       flexGrow: 1,
       flexShrink: 1,
+      boxShadow: 'none',
       flexBasis: '20%',
       '&:focus-within, &:hover': {},
       '@media (max-width: 680px)': {
@@ -171,6 +173,7 @@ const theme = {
       backgroundColor: 'primary',
       color: 'text',
       fontSize: '16px',
+      marginTop: '20px',
       '&:hover': {
         backgroundColor: 'secondary',
         border: '1px solid',
