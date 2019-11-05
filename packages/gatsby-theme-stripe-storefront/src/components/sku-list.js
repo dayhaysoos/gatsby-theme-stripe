@@ -49,13 +49,21 @@ const SkuList = () => {
           <Card key={skuID} sx={{ variant: 'li.purchaseItem', border: 'none' }}>
             <CardContent>
               <section sx={{ variant: 'section.itemDetails' }}>
-                <div css={{ maxHeight: '200px', height: '200px' }}>
+                <div
+                  sx={{
+                    maxHeight: '200px',
+                    height: '200px',
+                    marginBottom: '20px',
+                  }}
+                >
                   <SkuImage size={200} image={localImage} name={name} />
                 </div>
                 <p sx={{ color: 'text' }}>{name}</p>
                 <p sx={{ color: 'text' }}>{price}</p>
               </section>
-              <section sx={{ variant: 'section.buttonWrapper' }}>
+              <section
+                sx={{ variant: 'section.buttonWrapper', marginTop: '20px' }}
+              >
                 <AddItemButton sku={sku} />
               </section>
             </CardContent>

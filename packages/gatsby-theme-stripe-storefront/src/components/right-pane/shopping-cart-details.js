@@ -37,10 +37,17 @@ const ShoppingCartDetails = () => {
       <div
         sx={{
           variant: 'cartDetails.container',
+          backgroundColor: 'primary',
+          paddingTop: '5px',
+          paddingBottom: '5px',
+          paddingRight: '10px',
+          fontWeight: 'bold',
+          letterSpacing: '1.3',
+          fontSize: '14px',
         }}
       >
         <span sx={{ color: 'text' }}>Product</span>
-        <div sx={{ variant: 'cartDetails.inputContainer' }}>
+        <div sx={{ variant: 'cartDetails.inputContainer', width: '95px' }}>
           <span sx={{ color: 'text' }}>Qty</span>
           <span sx={{ color: 'text' }}>Remove</span>
         </div>
@@ -72,7 +79,12 @@ const ShoppingCartDetails = () => {
                           key={sku}
                           sx={{ variant: 'cartDetails.itemContainer' }}
                         >
-                          <div sx={{ variant: 'cartDetails.productContainer' }}>
+                          <div
+                            sx={{
+                              variant: 'cartDetails.productContainer',
+                              alignItems: 'center',
+                            }}
+                          >
                             <div sx={{ variant: 'img.checkout' }}>
                               <CheckoutImage
                                 sx={{ variant: 'img.skuList' }}
@@ -81,8 +93,8 @@ const ShoppingCartDetails = () => {
                                 image={localImage}
                               />
                             </div>
-                            <p sx={{ color: 'text' }}>{name}</p>
-                            <p sx={{ color: 'text' }}>{price}</p>
+                            <p sx={{ color: 'secondary' }}>{name}</p>
+                            <p sx={{ color: 'secondary' }}>{price}</p>
                           </div>
                           <div
                             css={{
@@ -91,7 +103,10 @@ const ShoppingCartDetails = () => {
                             }}
                           >
                             <Input
-                              sx={{ variant: 'field.checkout' }}
+                              sx={{
+                                variant: 'field.checkout',
+                                color: 'secondary',
+                              }}
                               inputProps={{ style: { textAlign: 'center' } }}
                               type="number"
                               placeholder={'Enter Amount'}
@@ -128,7 +143,17 @@ const ShoppingCartDetails = () => {
           </Form>
         )}
       />
-      <span css={{ textAlign: 'center', marginBottom: '20px' }}>{total}</span>
+      <span
+        css={{
+          display: 'flex',
+          justifyContent: 'center',
+          textAlign: 'center',
+          marginBottom: '20px',
+          marginTop: '20px',
+        }}
+      >
+        Total: {total}
+      </span>
     </>
   )
 }
