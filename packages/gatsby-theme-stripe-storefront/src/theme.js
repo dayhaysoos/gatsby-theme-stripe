@@ -329,6 +329,7 @@ const theme = {
     checkout: {
       width: '50px',
       textAlign: 'right',
+      color: 'text',
     },
     error: {
       color: 'red',
