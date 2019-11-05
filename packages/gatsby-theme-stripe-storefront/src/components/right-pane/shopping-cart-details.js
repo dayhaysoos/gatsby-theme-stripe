@@ -39,10 +39,10 @@ const ShoppingCartDetails = () => {
           variant: 'cartDetails.container',
         }}
       >
-        <span>Product</span>
+        <span sx={{ color: 'text' }}>Product</span>
         <div sx={{ variant: 'cartDetails.inputContainer' }}>
-          <span>Qty</span>
-          <span>Remove</span>
+          <span sx={{ color: 'text' }}>Qty</span>
+          <span sx={{ color: 'text' }}>Remove</span>
         </div>
       </div>
       <Formik
@@ -81,8 +81,8 @@ const ShoppingCartDetails = () => {
                                 image={localImage}
                               />
                             </div>
-                            <p>{name}</p>
-                            <p>{price}</p>
+                            <p sx={{ color: 'text' }}>{name}</p>
+                            <p sx={{ color: 'text' }}>{price}</p>
                           </div>
                           <div
                             css={{
@@ -119,7 +119,7 @@ const ShoppingCartDetails = () => {
                       }}
                       css={{ justifyContent: 'center' }}
                     >
-                      <h1>No Cart Items</h1>
+                      <h1 sx={{ color: 'primary' }}>No Cart Items</h1>
                     </div>
                   )}
                 </div>
