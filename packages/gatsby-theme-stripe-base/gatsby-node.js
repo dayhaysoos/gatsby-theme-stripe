@@ -18,11 +18,18 @@ exports.createSchemaCustomization = ({ actions }) => {
 
   type Attribute implements Node {
     id: ID!
-    name: String!
+    gender: String
+    color: String
+    size: String
   }
 
   type MetaData implements Node {
     id: ID!
+  }
+
+  type Inventory implements Node {
+    quantity: Int
+    type: String
   }
 
   type StripeSku implements Node {
@@ -35,12 +42,32 @@ exports.createSchemaCustomization = ({ actions }) => {
     price: String!
     product: String!
     skuID: String!
-    name: String!
+    name: String
     slug: String!
   }
+
+
+  type PackageDimensions implements Node {
+      height: Int
+      length: Int
+      weight: Int
+      width: Int
+  }
+
+  type StripeProduct implements Node {
+    id: String!
+    object: String
+    active: Boolean
+    attributes: [String!]
+    caption: String!
+    description: String!
+    name: String
+    package_dimensions: PackageDimensions
+    shippable: Boolean
+    url: String!
+    skus: [StripeSku] @link(by: "product", from: "id")
+  }
   
-
-
   type StripeImage implements Node {
     image: Image
   }
@@ -92,9 +119,9 @@ exports.sourceNodes = async ({
     },
   })
 
-  const plans = await axios({
+  const products = await axios({
     method: 'GET',
-    url: 'https://api.stripe.com/v1/plans',
+    url: 'https://api.stripe.com/v1/products',
     headers: {
       Authorization: `Bearer ${process.env.STRIPE_API_SECRET}`,
     },
@@ -105,7 +132,6 @@ exports.sourceNodes = async ({
   }
 
   const skuList = result.data
-  const planList = plans.data
 
   // format sku data to something more desirable
   // create nodeId in the process
@@ -129,24 +155,16 @@ exports.sourceNodes = async ({
     actions.createNode(node)
   })
 
-  planList.data.forEach(plan => {
+  products.data.data.forEach(product => {
     const node = {
-      ...plan,
-      number_amount: plan.amount,
-      amount: formatPrice(plan.amount),
-      planID: plan.id,
-      id: createNodeId(`Stripe-${plan.id}`),
-      name: plan.nickname,
-      slug: plan.nickname,
-      // image: plan.image ? plan.image : 'no-image',
+      ...product,
+      slug: product.name,
       internal: {
-        type: 'StripePlan',
-        contentDigest: createContentDigest(plan),
+        type: 'StripeProduct',
+        contentDigest: createContentDigest(product),
       },
     }
-
     // create node with processed data
-
     actions.createNode(node)
   })
 }
@@ -170,6 +188,11 @@ exports.createResolvers = ({ createResolvers }, options) => {
     StripeSku: {
       slug: {
         resolve: source => slugify(source.name),
+      },
+    },
+    StripeProduct: {
+      slug: {
+        resolve: source => slugify(source.id),
       },
     },
   })
@@ -218,3 +241,39 @@ exports.createResolvers = ({ createResolvers }, options) => {
 //     });
 //   });
 // };
+
+/*******************************
+ * ********** PLAN STUFF *********
+ * *****************************
+ */
+
+// const plans = await axios({
+//   method: 'GET',
+//   url: 'https://api.stripe.com/v1/plans',
+//   headers: {
+//     Authorization: `Bearer ${process.env.STRIPE_API_SECRET}`,
+//   },
+// })
+
+// planList.data.forEach(plan => {
+//   const node = {
+//     ...plan,
+//     number_amount: plan.amount,
+//     amount: formatPrice(plan.amount),
+//     planID: plan.id,
+//     id: createNodeId(`Stripe-${plan.id}`),
+//     name: plan.nickname,
+//     slug: plan.nickname,
+//     // image: plan.image ? plan.image : 'no-image',
+//     internal: {
+//       type: 'StripePlan',
+//       contentDigest: createContentDigest(plan),
+//     },
+//   }
+
+//   // create node with processed data
+
+//   actions.createNode(node)
+// })
+
+//  const planList = plans.data
