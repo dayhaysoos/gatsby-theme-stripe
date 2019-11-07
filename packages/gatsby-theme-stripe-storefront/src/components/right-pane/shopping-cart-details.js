@@ -46,10 +46,10 @@ const ShoppingCartDetails = () => {
           fontSize: '14px',
         }}
       >
-        <span sx={{ color: 'text' }}>Product</span>
+        <span sx={{ color: 'primaryText' }}>Product</span>
         <div sx={{ variant: 'cartDetails.inputContainer', width: '95px' }}>
-          <span sx={{ color: 'text' }}>Qty</span>
-          <span sx={{ color: 'text' }}>Remove</span>
+          <span sx={{ color: 'primaryText' }}>Qty</span>
+          <span sx={{ color: 'primaryText' }}>Remove</span>
         </div>
       </div>
       <Formik

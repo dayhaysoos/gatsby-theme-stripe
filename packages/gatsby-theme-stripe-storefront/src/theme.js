@@ -12,7 +12,9 @@ const theme = {
     gray: ['#efefef', '#ddd', '#333', '#111'],
     background: '#fff',
     primary: 'rebeccapurple',
+    primaryText: '#fff',
     secondary: '#339966',
+    secondaryText: 'black',
     accent: '#ffdf37',
     text: '#fff',
     hightlight: 'yellow',
@@ -30,7 +32,7 @@ const theme = {
       overflowX: 'hidden',
     },
     Header: {
-      color: 'text',
+      color: 'primaryText',
       backgroundColor: 'primary',
       fontWeight: 'bold',
       margin: '0 auto',
@@ -72,7 +74,7 @@ const theme = {
       flexDirection: 'column',
       '&:focus-within, &:hover': {
         backgroundColor: 'primary',
-        color: 'text',
+        color: 'primaryText',
       },
       '@media (max-width: 680px)': {
         margin: '10px 0',
@@ -102,7 +104,7 @@ const theme = {
       height: '24px',
       width: '24px',
       backgroundColor: 'accent',
-      color: 'text',
+      color: 'primaryText',
       fontSize: '.75rem',
     },
   },
@@ -171,7 +173,7 @@ const theme = {
     },
     cart: {
       backgroundColor: 'primary',
-      color: 'text',
+      color: 'primaryText',
       fontSize: '16px',
       '&:hover': {
         backgroundColor: 'secondary',
@@ -181,7 +183,7 @@ const theme = {
     },
     cartIcon: {
       display: 'flex',
-      color: 'text',
+      color: 'primaryText',
       border: 'none',
       justifyContent: 'center',
       padding: 0,
@@ -199,7 +201,7 @@ const theme = {
     },
     checkout: {
       backgroundColor: 'primary',
-      color: 'text',
+      color: 'primaryText',
       height: '40px',
       borderRadius: '10px',
       fontSize: '16px',
@@ -214,7 +216,7 @@ const theme = {
       },
       addRemove: {
         backgroundColor: 'primary',
-        color: 'text',
+        color: 'primaryText',
         fontSize: '18px',
         transition: 'all .5s ease',
         outline: 'none',
@@ -329,7 +331,7 @@ const theme = {
     checkout: {
       width: '50px',
       textAlign: 'right',
-      color: 'text',
+      color: 'primaryText',
     },
     error: {
       color: 'red',
