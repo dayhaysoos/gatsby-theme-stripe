@@ -160,31 +160,26 @@ export const CartProvider = ({ children, stripe }) => {
 
 export const useCart = () => {
   const data = useStaticQuery(graphql`
-    query {
-      allStripeSku {
+    {
+      allStripeProduct {
         nodes {
           name
-          price
-          number_price
-          currency
-          slug
-          skuID
-          localImage {
-            childImageSharp {
-              fixed(height: 50, width: 50) {
-                base64
-                tracedSVG
-                aspectRatio
-                width
-                height
-                src
-                srcSet
-                srcWebp
-                srcSetWebp
-                originalName
-              }
-            }
+          id
+          description
+          shippable
+          skus {
+            image
+            name
+            number_price
+            price
+            currency
+            slug
+            skuID
+            image
+            product
           }
+          attributes
+          caption
         }
       }
     }
@@ -194,7 +189,9 @@ export const useCart = () => {
 
   const { skus, stripe, lastClicked, toggleRightMenu, cartDetails } = cart
 
-  const itemReference = data.allStripeSku.nodes
+  const itemReference = data.allStripeProduct.nodes
+
+  console.log('YO!', itemReference)
 
   let storageReference =
     typeof localStorage === 'object' && JSON.parse(localStorage.getItem('skus'))

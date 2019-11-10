@@ -1,44 +1,13 @@
 /** @jsx jsx */
-import React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
 import { jsx } from 'theme-ui'
 import AddItemButton from './add-item-button'
 import SkuImage from './sku-list/sku-image'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
+import { useCart } from '../context/shopping-cart'
 
 const SkuList = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      allStripeSku {
-        nodes {
-          name
-          price
-          currency
-          slug
-          skuID
-          localImage {
-            childImageSharp {
-              fixed(height: 200, width: 200) {
-                base64
-                tracedSVG
-                aspectRatio
-                width
-                height
-                src
-                srcSet
-                srcWebp
-                srcSetWebp
-                originalName
-              }
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  const skus = data.allStripeSku.nodes
+  const skus = []
 
   return (
     <section sx={{ variant: 'ul.skuList' }}>

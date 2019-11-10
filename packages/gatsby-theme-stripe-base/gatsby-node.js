@@ -17,7 +17,6 @@ exports.createSchemaCustomization = ({ actions }) => {
   createTypes(`
 
   type Attribute implements Node {
-    id: ID!
     gender: String
     color: String
     size: String
@@ -58,14 +57,15 @@ exports.createSchemaCustomization = ({ actions }) => {
     id: String!
     object: String
     active: Boolean
-    attributes: [String!]
-    caption: String!
-    description: String!
-    name: String
+    attributes: [String]
+    caption: String
+    description: String
+    name: String!
     package_dimensions: PackageDimensions
     shippable: Boolean
-    url: String!
+    url: String
     skus: [StripeSku] @link(by: "product", from: "id")
+    slug: String
   }
   
   type StripeImage implements Node {
@@ -144,8 +144,8 @@ exports.sourceNodes = async ({
       price: formatPrice(sku.price),
       skuID: sku.id,
       id: createNodeId(`Stripe-${sku.id}`),
-      name: sku.attributes.name,
-      slug: sku.attributes.name,
+      name: sku.name,
+      slug: sku.name,
       internal: {
         type: 'StripeSku',
         contentDigest: createContentDigest(sku),
@@ -158,7 +158,7 @@ exports.sourceNodes = async ({
   products.data.data.forEach(product => {
     const node = {
       ...product,
-      slug: product.name,
+      slug: product.id,
       internal: {
         type: 'StripeProduct',
         contentDigest: createContentDigest(product),
@@ -187,7 +187,7 @@ exports.createResolvers = ({ createResolvers }, options) => {
   createResolvers({
     StripeSku: {
       slug: {
-        resolve: source => slugify(source.name),
+        resolve: source => slugify(source.product),
       },
     },
     StripeProduct: {
