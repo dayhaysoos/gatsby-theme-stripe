@@ -1,10 +1,36 @@
 /** @jsx jsx */
+import { Fragment } from 'react'
 import { jsx } from 'theme-ui'
 import { withFormik } from 'formik'
 import * as Yup from 'yup'
 
 const formikWrapper = withFormik({
-  mapPropsToValues: () => ({ color: '' }),
+  mapPropsToValues: ({ skus }) => {
+    return skus.reduce(
+      (acc, current) => {
+        const color = acc.color
+        const size = acc.size
+        const gender = acc.gender
+
+        if (current.attributes.color) {
+          color.push(current.attributes.color)
+        }
+
+        if (current.attributes.size) {
+          size.push(current.attributes.size)
+        }
+
+        if (current.attributes.gender) {
+          gender.push(current.attributes.gender)
+        }
+
+        return {
+          ...acc,
+        }
+      },
+      { size: [], color: [], gender: [] }
+    )
+  },
   validationScheme: Yup.object().shape({
     color: Yup.string().required('Color is required!'),
   }),
@@ -18,8 +44,8 @@ const formikWrapper = withFormik({
 })
 
 const ProductForm = props => {
-  console.log('wtf', props)
   const {
+    initialValues,
     values,
     touched,
     errors,
@@ -30,23 +56,34 @@ const ProductForm = props => {
     handleSubmit,
     handleReset,
   } = props
+
+  // const { attributes } = values
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="email" style={{ display: 'block' }}>
-        Color
-      </label>
-      <select
-        name="color"
-        value={values.color}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        style={{ display: 'block' }}
-      >
-        <option value="" label="Select a color" />
-        <option value="red" label="red" />
-        <option value="blue" label="blue" />
-        <option value="green" label="green" />
-      </select>
+      {Object.keys(values).map(attribute => {
+        return (
+          <Fragment key={attribute}>
+            <label htmlFor="email" sx={{ display: 'block' }}>
+              {attribute}
+            </label>
+            <select
+              name={attribute}
+              value={attribute}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              sx={{ display: 'block' }}
+            >
+              {initialValues[attribute].map(optionValue => (
+                <option
+                  key={`${attribute}-${optionValue}`}
+                  value={optionValue}
+                  label={optionValue}
+                />
+              ))}
+            </select>
+          </Fragment>
+        )
+      })}
       {errors.color && touched.color && (
         <div className="input-feedback">{errors.color}</div>
       )}

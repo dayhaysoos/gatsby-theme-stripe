@@ -43,6 +43,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     skuID: String!
     name: String
     slug: String!
+    inventory: Inventory
   }
 
 

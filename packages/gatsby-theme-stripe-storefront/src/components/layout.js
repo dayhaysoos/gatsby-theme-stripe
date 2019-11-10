@@ -8,7 +8,6 @@ import ProductList from '../components/product-list'
 const Layout = ({ children }) => (
   <ThemeLayout>
     <Header />
-    <ProductList />
     <RightPane />
     <Main>{children}</Main>
   </ThemeLayout>

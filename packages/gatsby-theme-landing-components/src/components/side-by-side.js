@@ -1,5 +1,4 @@
-// @jsx jsx
-import React from 'react'
+/** @jsx jsx */
 import { jsx } from 'theme-ui'
 // import Container from '@material-ui/core/Container'
 import Container from './container'

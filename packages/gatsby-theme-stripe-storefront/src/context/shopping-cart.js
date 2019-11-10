@@ -191,8 +191,6 @@ export const useCart = () => {
 
   const itemReference = data.allStripeProduct.nodes
 
-  console.log('YO!', itemReference)
-
   let storageReference =
     typeof localStorage === 'object' && JSON.parse(localStorage.getItem('skus'))
 

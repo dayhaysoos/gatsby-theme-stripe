@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, navigate } from 'gatsby'
 import {
   Container,
   FormControl,
@@ -13,19 +13,22 @@ import {
   CardActionArea,
 } from '@material-ui/core'
 
-import ProductForm from '../components/product-list/product-form'
-
 const ProductList = () => {
   const data = useStaticQuery(graphql`
     {
       allStripeProduct {
         nodes {
           attributes
+          slug
           skus {
             attributes {
               color
               gender
               size
+            }
+            inventory {
+              quantity
+              type
             }
             image
             name
@@ -40,28 +43,12 @@ const ProductList = () => {
     }
   `)
 
-  //   const skuAttributes = useStaticQuery(graphql`
-  //     {
-  // allStripeSku {
-  //   nodes {
-  //     attributes {
-  //       color
-  //       gender
-  //       size
-  //     }
-  //   }
-  // }
-  //     }
-  //   `)
-
-  //   console.log(skuAttributes)
-
   return (
     <Container>
       {data.allStripeProduct.nodes.map(product => {
         return (
-          <Card>
-            <CardActionArea>
+          <Card key={product.slug}>
+            <CardActionArea onClick={() => navigate(product.slug)}>
               <CardMedia
                 sx={{ height: '100px', width: '100px' }}
                 image={product.images[0]}
@@ -69,6 +56,7 @@ const ProductList = () => {
               <CardContent>
                 <p>{product.name}</p>
                 <p>{product.caption}</p>
+                <p>{product.skus[0].price}</p>
               </CardContent>
             </CardActionArea>
           </Card>
