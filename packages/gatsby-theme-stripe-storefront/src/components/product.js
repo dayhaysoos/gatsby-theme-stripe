@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { Container, Card, CardMedia, CardContent } from '@material-ui/core'
-import ProductForm from '../components/product-list/product-form'
+import ProductForm from './product-form'
 
 const Product = ({
   slug,
