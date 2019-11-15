@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { useCart } from '../context/shopping-cart'
+import { navigate } from 'gatsby'
 import ShoppingCartDetails from './right-pane/shopping-cart-details'
 import { Button } from '@material-ui/core'
 
@@ -44,7 +45,7 @@ const RightPane = () => {
             sx={{
               variant: cartCount > 0 ? 'button.cart' : 'button.disabled',
             }}
-            onClick={() => redirectToCheckout()}
+            onClick={() => navigate('/checkout')}
           >
             Checkout
           </Button>

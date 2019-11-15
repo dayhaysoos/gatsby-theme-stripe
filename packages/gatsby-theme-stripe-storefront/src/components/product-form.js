@@ -5,37 +5,28 @@ import { withFormik } from 'formik'
 import { Container, CardMedia } from '@material-ui/core'
 import * as Yup from 'yup'
 
+// TO BE CONTINUED
+
 const formikWrapper = withFormik({
   mapPropsToValues: ({ skus }) => {
-    return skus.reduce(
-      (acc, current) => {
-        const color = acc.attributes.color
-        const size = acc.attributes.size
-        const gender = acc.attributes.gender
+    let obj = {}
 
-        if (current.attributes.color) {
-          color.push(current.attributes.color)
-        }
+    const format = attributes => {
+      attributes.forEach(attribute => {
+        Object.keys(attribute).forEach(attr => {
+          if (obj.hasOwnProperty(attr)) {
+            obj[attr].push(attribute[attr])
+          } else {
+            obj[attr] = []
+            obj[attr].push(attribute[attr])
+          }
+        })
+      })
+    }
 
-        if (current.attributes.size) {
-          size.push(current.attributes.size)
-        }
+    skus.forEach(sku => format([sku.attributes]))
 
-        if (current.attributes.gender) {
-          gender.push(current.attributes.gender)
-        }
-
-        return {
-          ...acc,
-        }
-      },
-      {
-        attributes: { size: [], color: [], gender: [] },
-        color: '',
-        size: '',
-        gender: '',
-      }
-    )
+    return obj
   },
   validationSchema: Yup.object().shape({
     color: Yup.string().required('Color is required!'),
@@ -63,16 +54,30 @@ const ProductForm = props => {
     handleSubmit,
     handleReset,
     skus,
+    name,
+    description,
+    caption,
   } = props
 
-  const selectedItemByColor = skus.find(sku => {
-    console.log()
-    return sku.attributes.color.includes(values.color)
-  })
+  // const selectedItemByColor = skus.find(sku => {
+  //   return sku.attributes.color.includes(values.color)
+  // })
+
+  console.log('prawps', props)
 
   const { attributes } = values
   return (
-    <Container>
+    <Container sx={{ display: 'flex' }}>
+      <Container>
+        <p>{name}</p>
+        <p>{description}</p>
+        {/* <p>{selectedItemByColor.price}</p> */}
+        {/* <CardMedia
+          sx={{ height: '300px', width: '300px' }}
+          image={selectedItemByColor.image}
+        /> */}
+        <p>{caption}</p>
+      </Container>
       <form onSubmit={handleSubmit}>
         {Object.keys(attributes).map(attribute => {
           return (
@@ -119,11 +124,6 @@ const ProductForm = props => {
           Submit
         </button>
       </form>
-
-      <CardMedia
-        sx={{ height: '50px', width: '50px' }}
-        image={selectedItemByColor.image}
-      />
     </Container>
   )
 }

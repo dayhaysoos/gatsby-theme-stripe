@@ -139,8 +139,10 @@ exports.sourceNodes = async ({
   // create type in internal Object
 
   skuList.data.forEach(sku => {
+    console.log('wtf', sku)
     const node = {
       ...sku,
+      name: sku.product,
       number_price: sku.price,
       price: formatPrice(sku.price),
       skuID: sku.id,

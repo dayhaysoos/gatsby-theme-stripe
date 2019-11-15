@@ -76,6 +76,7 @@ const reducer = (cart, action) => {
 
   switch (action.type) {
     case 'addItem':
+      console.log('oi', action)
       typeof localStorage !== 'undefined' &&
         localStorage.setItem(
           'skus',
@@ -247,6 +248,7 @@ export const useCart = () => {
 
   return {
     skus,
+    stripe,
     addItem,
     deleteItem,
     cartCount,
