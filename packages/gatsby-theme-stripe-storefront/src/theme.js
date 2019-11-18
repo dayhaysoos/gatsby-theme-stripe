@@ -17,7 +17,7 @@ const theme = {
     secondaryText: 'black',
     accent: '#ffdf37',
     text: '#fff',
-    hightlight: 'yellow',
+    hightlight: '#339966',
   },
   sizes: {
     default: '100%',
@@ -104,7 +104,7 @@ const theme = {
       height: '24px',
       width: '24px',
       backgroundColor: 'accent',
-      color: 'primaryText',
+      color: 'primary',
       fontSize: '.75rem',
     },
   },
