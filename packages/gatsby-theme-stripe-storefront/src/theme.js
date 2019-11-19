@@ -12,12 +12,10 @@ const theme = {
     gray: ['#efefef', '#ddd', '#333', '#111'],
     background: '#fff',
     primary: 'rebeccapurple',
-    primaryText: '#fff',
     secondary: '#339966',
-    secondaryText: 'black',
     accent: '#ffdf37',
     text: '#fff',
-    hightlight: '#339966',
+    hightlight: 'yellow',
   },
   sizes: {
     default: '100%',
@@ -32,7 +30,7 @@ const theme = {
       overflowX: 'hidden',
     },
     Header: {
-      color: 'primaryText',
+      color: 'text',
       backgroundColor: 'primary',
       fontWeight: 'bold',
       margin: '0 auto',
@@ -74,7 +72,7 @@ const theme = {
       flexDirection: 'column',
       '&:focus-within, &:hover': {
         backgroundColor: 'primary',
-        color: 'primaryText',
+        color: 'text',
       },
       '@media (max-width: 680px)': {
         margin: '10px 0',
@@ -104,7 +102,7 @@ const theme = {
       height: '24px',
       width: '24px',
       backgroundColor: 'accent',
-      color: 'primary',
+      color: 'primaryText',
       fontSize: '.75rem',
     },
   },
@@ -177,7 +175,6 @@ const theme = {
       fontSize: '16px',
       '&:hover': {
         backgroundColor: 'secondary',
-        border: '1px solid',
         borderColor: 'secondary',
       },
     },
@@ -201,7 +198,7 @@ const theme = {
     },
     checkout: {
       backgroundColor: 'primary',
-      color: 'primaryText',
+      color: 'text',
       height: '40px',
       borderRadius: '10px',
       fontSize: '16px',
@@ -211,12 +208,11 @@ const theme = {
       minWidth: '70px',
       '&:hover': {
         color: 'secondary',
-        border: '1px solid',
         borderColor: 'secondary',
       },
       addRemove: {
         backgroundColor: 'primary',
-        color: 'primaryText',
+        color: 'text',
         fontSize: '18px',
         transition: 'all .5s ease',
         outline: 'none',
@@ -331,7 +327,7 @@ const theme = {
     checkout: {
       width: '50px',
       textAlign: 'right',
-      color: 'primaryText',
+      color: 'text',
     },
     error: {
       color: 'red',
