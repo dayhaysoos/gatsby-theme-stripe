@@ -92,20 +92,7 @@ exports.sourceNodes = async ({
     },
   })
 
-  const plans = await axios({
-    method: 'GET',
-    url: 'https://api.stripe.com/v1/plans',
-    headers: {
-      Authorization: `Bearer ${process.env.STRIPE_API_SECRET}`,
-    },
-  })
-
-  if (result.errors) {
-    reporter.panic('Error loading skus', JSON.stringify(result.errors))
-  }
-
   const skuList = result.data
-  const planList = plans.data
 
   // format sku data to something more desirable
   // create nodeId in the process
@@ -126,27 +113,6 @@ exports.sourceNodes = async ({
       },
     }
     // create node with processed data
-    actions.createNode(node)
-  })
-
-  planList.data.forEach(plan => {
-    const node = {
-      ...plan,
-      number_amount: plan.amount,
-      amount: formatPrice(plan.amount),
-      planID: plan.id,
-      id: createNodeId(`Stripe-${plan.id}`),
-      name: plan.nickname,
-      slug: plan.nickname,
-      // image: plan.image ? plan.image : 'no-image',
-      internal: {
-        type: 'StripePlan',
-        contentDigest: createContentDigest(plan),
-      },
-    }
-
-    // create node with processed data
-
     actions.createNode(node)
   })
 }
