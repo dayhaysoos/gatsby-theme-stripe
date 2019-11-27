@@ -1,0 +1,35 @@
+{
+  "name": "gatsby-theme-stripe-plan-base",
+  "version": "1.0.6",
+  "author": {
+    "name": "Nick DeJesus",
+    "url": "https://www.twitter.com/dayhaysoos",
+    "email": "ndejesus1227@gmail.com"
+  },
+  "scripts": {
+    "build": "gatsby build",
+    "clean": "gatsby clean",
+    "develop": "gatsby develop"
+  },
+  "devDependencies": {
+    "gatsby": "^2.15.15",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.13.68",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "dependencies": {
+    "@mdx-js/react": "^1.5.1",
+    "axios": "^0.19.0",
+    "dotenv": "^8.1.0",
+    "gatsby-plugin-page-creator": "^2.1.25",
+    "gatsby-plugin-react-helmet": "^3.1.11",
+    "gatsby-plugin-stripe": "^1.2.3",
+    "gatsby-source-filesystem": "^2.1.31",
+    "gatsby-source-graphql": "^2.1.18",
+    "numeral": "^2.0.6"
+  }
+}
