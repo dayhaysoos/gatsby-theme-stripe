@@ -1,0 +1,17 @@
+{
+  "name": "subscription-site",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "deepmerge": "^4.1.1",
+    "gatsby": "^2.15.15",
+    "gatsby-theme-stripe-subscription": "*",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  }
+}
