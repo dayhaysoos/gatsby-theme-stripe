@@ -11,11 +11,16 @@ const ProductCard = ({ plan }) => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        maxWidth: '300px',
-        minWidth: '250px',
         flexBasis: '30%',
-        margin: '20px 20px',
+        margin: '20px 10px',
         alignItems: 'center',
+        '@media (max-width: 900px)': {
+          flexBasis: '45%',
+        },
+        '@media (max-width: 600px)': {
+          flexBasis: '100%',
+          maxWidth: '300px',
+        },
       }}
     >
       <CardContent sx={{ margin: '0 auto' }}>

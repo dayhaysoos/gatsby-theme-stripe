@@ -10,7 +10,10 @@ const SubscriptionList = ({ allStripePlan }) => {
         backgroundColor: 'background',
         display: 'flex',
         flexFlow: 'row wrap',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
+        '@media (max-width: 600px)': {
+          justifyContent: 'center',
+        },
       }}
     >
       {allStripePlan.map(plan => {
