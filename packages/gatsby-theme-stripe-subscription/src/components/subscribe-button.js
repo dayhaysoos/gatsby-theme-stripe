@@ -11,7 +11,7 @@ const SubscribeButton = ({ planID, quantity = 1 }) => {
       sx={{
         backgroundColor: 'primary',
         color: 'white',
-        width: '50%',
+        minWidth: '50%',
         height: '50px',
         fontSize: '3',
         marginBottom: '30px',
