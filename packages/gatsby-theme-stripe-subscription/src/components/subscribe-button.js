@@ -3,11 +3,19 @@ import { jsx } from 'theme-ui'
 import { Button } from '@material-ui/core'
 import { useSubscription } from '../context/subscription'
 
-const SubscribeButton = ({ planID, quantity = 1 }) => {
+const SubscribeButton = ({ planID, quantity = 1, handleClick }) => {
   const { redirectToPlanCheckout } = useSubscription()
+
+  const handleRedirect = () => {
+    if (!handleClick) {
+      return redirectToPlanCheckout(planID, quantity)
+    } else {
+      return handleClick()
+    }
+  }
   return (
     <Button
-      onClick={() => redirectToPlanCheckout(planID, quantity)}
+      onClick={handleRedirect}
       sx={{
         backgroundColor: 'primary',
         color: 'white',
