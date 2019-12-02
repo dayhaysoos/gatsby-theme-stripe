@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import { Fragment } from 'react'
 import { jsx } from 'theme-ui'
 import { Container } from '@material-ui/core'
 import ProductCard from '../components/product-card'
@@ -17,7 +18,11 @@ const SubscriptionList = ({ allStripePlan }) => {
       }}
     >
       {allStripePlan.map(plan => {
-        return <ProductCard plan={plan} />
+        return (
+          <Fragment key={plan.planID}>
+            <ProductCard plan={plan} />
+          </Fragment>
+        )
       })}
     </Container>
   )

@@ -80,11 +80,16 @@ export const useSubscription = () => {
 
   const { lastClicked, isPaying } = subscription
 
-  const redirectToPlanCheckout = async (planID, quantity) => {
+  const redirectToPlanCheckout = async (
+    planID,
+    quantity,
+    customerEmail = null
+  ) => {
     const { error } = await stripe.redirectToCheckout({
       items: [{ plan: planID, quantity }],
       successUrl: `http://localhost:8000/`,
       cancelUrl: `http://localhost:8000/`,
+      customerEmail,
     })
   }
 
