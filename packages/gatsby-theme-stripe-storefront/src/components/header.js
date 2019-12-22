@@ -8,7 +8,7 @@ import logo from '../images/logo.jpeg'
 const Header = ({links}) => (
   <ThemeHeader>
     <Logo logo={logo} />
-    {links.map(link => <Link sx={{color: 'text'}} to={link}>{link.toUpperCase()}</Link>)}
+    {links.map(link => <Link sx={{color: 'text'}} to={link === 'home' ? '/' : link}>{link.toUpperCase()}</Link>)}
     <ShoppingCartIcon />
   </ThemeHeader>
 )
