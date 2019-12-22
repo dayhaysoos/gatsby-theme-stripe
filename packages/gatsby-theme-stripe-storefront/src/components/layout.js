@@ -6,7 +6,7 @@ import RightPane from './right-pane'
 
 const Layout = ({ children }) => (
   <ThemeLayout>
-    <Header links={['products', 'about']} />
+    <Header links={['home','products', 'about']} />
     <RightPane />
     <Main>{children}</Main>
   </ThemeLayout>
