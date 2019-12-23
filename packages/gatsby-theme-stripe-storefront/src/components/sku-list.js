@@ -58,24 +58,28 @@ const SkuList = () => {
                 >
                   <SkuImage size={200} image={localImage} name={name} />
                 </div>
-                <p
+                <span
                   sx={{
                     color: 'secondaryText',
                     fontWeight: 600,
                     letterSpacing: '2px',
+                    height: '54px',
+                    display: 'block',
+                    marginBottom: '20px',
                   }}
                 >
                   {name}
-                </p>
-                <p
+                </span>
+                <span
                   sx={{
                     color: 'secondaryText',
                     fontWeight: 600,
                     letterSpacing: '2px',
+                    display: 'block',
                   }}
                 >
                   {price}
-                </p>
+                </span>
               </section>
               <section
                 sx={{ variant: 'section.buttonWrapper', marginTop: '20px' }}

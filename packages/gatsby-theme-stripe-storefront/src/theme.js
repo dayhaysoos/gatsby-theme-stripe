@@ -153,7 +153,7 @@ const theme = {
   button: {
     disabled: {
       backgroundColor: 'gray.1',
-      color: 'primary',
+      color: 'black',
       height: '40px',
       borderRadius: '10px',
       fontSize: '16px',
@@ -171,7 +171,7 @@ const theme = {
     },
     cart: {
       backgroundColor: 'primary',
-      color: 'primaryText',
+      color: 'text',
       fontSize: '16px',
       '&:hover': {
         backgroundColor: 'secondary',
@@ -355,6 +355,7 @@ const theme = {
     rightPaneHidden: {
       position: 'fixed',
       right: '-107%',
+      top: 0,
       display: 'flex',
       flexFlow: 'column nowrap',
       width: '100%',
@@ -374,9 +375,10 @@ const theme = {
     rightPaneShow: {
       position: 'fixed',
       right: '0',
+      top: 0,
       display: 'flex',
       flexFlow: 'column nowrap',
-      width: '40%',
+      width: '55%',
       padding: '8px',
       fontSize: '1.5em',
       height: 'max',
