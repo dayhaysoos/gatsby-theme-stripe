@@ -10,7 +10,6 @@ const App = () => {
   return (
     <Layout>
       <SEO>
-        <Copy copy={'Some really good fruit copy'} />
         <SkuList />
       </SEO>
     </Layout>
