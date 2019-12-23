@@ -4,7 +4,6 @@ import { jsx } from 'theme-ui'
 import { FaImage } from 'react-icons/fa'
 import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
-import SEO from '../SEO'
 
 const SkuImage = ({ image, name, size }) => {
   return (
