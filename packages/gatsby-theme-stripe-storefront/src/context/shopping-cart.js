@@ -138,7 +138,11 @@ const reducer = (cart, action) => {
 
 export const CartContext = createContext()
 
-export const CartProvider = ({ children, stripe }) => {
+export const CartProvider = ({
+  children,
+  stripe,
+  billingAddressCollection,
+}) => {
   const skuStorage =
     typeof window !== 'undefined'
       ? JSON.parse(localStorage.getItem('skus'))
@@ -151,6 +155,7 @@ export const CartProvider = ({ children, stripe }) => {
         toggleRightMenu: false,
         cartDetails: [],
         stripe,
+        billingAddressCollection,
       })}
     >
       {children}
@@ -192,7 +197,14 @@ export const useCart = () => {
 
   const [cart, dispatch] = useContext(CartContext)
 
-  const { skus, stripe, lastClicked, toggleRightMenu, cartDetails } = cart
+  const {
+    skus,
+    stripe,
+    lastClicked,
+    toggleRightMenu,
+    cartDetails,
+    billingAddressCollection,
+  } = cart
 
   const itemReference = data.allStripeSku.nodes
 
@@ -244,6 +256,8 @@ export const useCart = () => {
       successUrl: `http://localhost:8000/`,
       cancelUrl: `http://localhost:8000/`,
       submitType,
+      billingAddressCollection:
+        billingAddressCollection === 'required' ? 'required' : 'auto',
     })
     if (error) {
       console.warn('Error:', error)
