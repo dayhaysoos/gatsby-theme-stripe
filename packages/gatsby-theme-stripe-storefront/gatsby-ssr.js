@@ -3,7 +3,7 @@ const { CartProvider } = require('./src/context/shopping-cart')
 
 export const wrapRootElement = (
   { element },
-  { stripePublicKey, billingAddressCollection }
+  { stripePublicKey, billingAddressCollection, successUrl, cancelUrl }
 ) => {
   const isBrowser = typeof window !== 'undefined'
 
@@ -13,6 +13,8 @@ export const wrapRootElement = (
     <CartProvider
       billingAddressCollection={billingAddressCollection}
       stripe={stripe}
+      successUrl={successUrl}
+      cancelUrl={cancelUrl}
     >
       {element}
     </CartProvider>

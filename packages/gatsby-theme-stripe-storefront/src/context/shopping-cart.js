@@ -142,6 +142,8 @@ export const CartProvider = ({
   children,
   stripe,
   billingAddressCollection,
+  successUrl,
+  cancelUrl,
 }) => {
   const skuStorage =
     typeof window !== 'undefined'
@@ -156,6 +158,8 @@ export const CartProvider = ({
         cartDetails: [],
         stripe,
         billingAddressCollection,
+        successUrl,
+        cancelUrl,
       })}
     >
       {children}
@@ -204,6 +208,8 @@ export const useCart = () => {
     toggleRightMenu,
     cartDetails,
     billingAddressCollection,
+    successUrl,
+    cancelUrl,
   } = cart
 
   const itemReference = data.allStripeSku.nodes
@@ -253,8 +259,8 @@ export const useCart = () => {
   const redirectToCheckout = async (submitType = 'auto') => {
     const { error } = await stripe.redirectToCheckout({
       items: checkoutData,
-      successUrl: `http://localhost:8000/`,
-      cancelUrl: `http://localhost:8000/`,
+      successUrl: successUrl ? successUrl : `http://localhost:8000/`,
+      cancelUrl: cancelUrl ? cancelUrl : `http://localhost:8000/`,
       submitType,
       billingAddressCollection:
         billingAddressCollection === 'required' ? 'required' : 'auto',
