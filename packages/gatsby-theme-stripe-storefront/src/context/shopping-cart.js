@@ -259,7 +259,7 @@ export const useCart = () => {
   const redirectToCheckout = async (submitType = 'auto') => {
     const { error } = await stripe.redirectToCheckout({
       items: checkoutData,
-      successUrl: successUrl ? successUrl : `http://localhost:8000/`,
+      successUrl: successUrl ? successUrl : `http://localhost:8000/thank-you`,
       cancelUrl: cancelUrl ? cancelUrl : `http://localhost:8000/`,
       submitType,
       billingAddressCollection:
