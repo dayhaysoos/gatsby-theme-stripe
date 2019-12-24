@@ -4,6 +4,9 @@ import Layout from '../components/layout'
 
 const ThankYou = () => {
   window.localStorage.removeItem('skus')
+  setTimeout(() => {
+    window.location.href = '/'
+  }, 2000)
   return (
     <Layout>
       <h1
