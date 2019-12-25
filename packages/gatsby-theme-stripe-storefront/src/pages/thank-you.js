@@ -3,9 +3,12 @@ import { jsx } from 'theme-ui'
 import Layout from '../components/layout'
 
 const ThankYou = () => {
-  window.localStorage.removeItem('skus')
+  const isBrowser = typeof window !== 'undefined'
+
+  isBrowser ? window.localStorage.removeItem('skus') : null
+
   setTimeout(() => {
-    window.location.href = '/'
+    isBrowser ? (window.location.href = '/') : null
   }, 2000)
   return (
     <Layout>
