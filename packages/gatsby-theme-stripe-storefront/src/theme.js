@@ -145,6 +145,9 @@ const theme = {
       boxShadow: 'none',
       flexBasis: '20%',
       '&:focus-within, &:hover': {},
+      '@media (max-width: 900px)': {
+        flexBasis: '50%',
+      },
       '@media (max-width: 680px)': {
         margin: '10px 0',
       },
