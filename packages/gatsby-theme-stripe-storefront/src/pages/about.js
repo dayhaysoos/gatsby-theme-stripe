@@ -1,5 +1,7 @@
-import React from 'react';
+/**@jsx jsx */
+import { jsx } from 'theme-ui'
+import Layout from '../components/layout'
 
-const About = () => <h1>About Page stuff</h1>
+const About = () => <Layout>About Page</Layout>
 
 export default About
