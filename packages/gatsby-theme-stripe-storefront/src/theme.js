@@ -387,7 +387,7 @@ const theme = {
       padding: '8px',
       fontSize: '1.5em',
       height: 'max',
-      transition: 'all 1s ease',
+      transition: 'all 0.5s ease',
       backgroundColor: 'background',
       zIndex: 100,
       boxShadow: '0 15px 10px',
