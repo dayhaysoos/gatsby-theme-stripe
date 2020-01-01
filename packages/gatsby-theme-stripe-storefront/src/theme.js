@@ -12,6 +12,8 @@ const theme = {
     gray: ['#efefef', '#ddd', '#333', '#111'],
     background: '#fff',
     primary: 'rebeccapurple',
+    primaryText: 'black',
+    secondaryText: 'white',
     secondary: '#339966',
     accent: '#ffdf37',
     text: '#fff',

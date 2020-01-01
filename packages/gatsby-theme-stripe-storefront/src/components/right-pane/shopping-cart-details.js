@@ -144,12 +144,13 @@ const ShoppingCartDetails = () => {
         )}
       />
       <span
-        css={{
+        sx={{
           display: 'flex',
           justifyContent: 'center',
           textAlign: 'center',
           marginBottom: '20px',
           marginTop: '20px',
+          color: 'secondaryText',
         }}
       >
         Total: {total}

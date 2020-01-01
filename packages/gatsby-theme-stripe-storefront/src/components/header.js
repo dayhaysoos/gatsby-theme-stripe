@@ -5,8 +5,9 @@ import { Link, navigate } from 'gatsby'
 import ShoppingCartIcon from './shopping-cart-icon'
 import { Menu, MenuItem, Button } from '@material-ui/core'
 import { useCart } from 'gatsby-theme-stripe-storefront/src/context/shopping-cart'
+import Logo from '../components/logo'
 
-const Header = ({ links }) => {
+const Header = ({ links, logo }) => {
   const { handleCloseCart } = useCart()
   const [anchorEl, setAnchorEl] = useState(null)
 
@@ -85,6 +86,7 @@ const Header = ({ links }) => {
             </MenuItem>
           ))}
         </Menu>
+        <Logo logo={logo} />
         <ShoppingCartIcon />
       </div>
     </ThemeHeader>
