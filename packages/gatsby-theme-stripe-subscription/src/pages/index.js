@@ -5,12 +5,7 @@ import { useSubscription } from '../context/subscription'
 
 const Home = () => {
   const { allStripePlan, redirectToPlanCheckout } = useSubscription()
-  return (
-    <SubscriptionList
-      allStripePlan={allStripePlan}
-      handleClick={() => redirectToPlanCheckout(planID, quantity)}
-    />
-  )
+  return <SubscriptionList allStripePlan={allStripePlan} />
 }
 
 export default Home

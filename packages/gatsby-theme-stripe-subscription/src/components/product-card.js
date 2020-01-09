@@ -4,6 +4,7 @@ import { Card, CardContent, Typography } from '@material-ui/core'
 import SubscribeButton from './subscribe-button'
 
 const ProductCard = ({ plan }) => {
+  console.log('plan', plan)
   return (
     <Card
       key={plan.planID}
