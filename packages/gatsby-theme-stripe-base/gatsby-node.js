@@ -102,7 +102,6 @@ exports.sourceNodes = async ({
     const node = {
       ...sku,
       number_price: sku.price,
-      price: formatPrice(sku.price),
       skuID: sku.id,
       id: createNodeId(`Stripe-${sku.id}`),
       name: sku.attributes.name,
@@ -140,47 +139,3 @@ exports.createResolvers = ({ createResolvers }, options) => {
     },
   })
 }
-
-// create pages for each item
-
-// exports.createPages = async ({ actions, graphql, reporter }, options) => {
-//   const basePath = options.basePath || "/";
-
-//   actions.createPage({
-//     path: basePath,
-//     component: require.resolve("./src/templates/donate-form.js")
-//   });
-
-//   const result = await graphql(`
-//     query {
-//       allStripeSku {
-//         nodes {
-//           name
-//           price
-//           currency
-//           slug
-//           image
-//           skuID
-//         }
-//       }
-//     }
-//   `);
-
-//   if (result.erros) {
-//     reporter.panic("error loading products", reporter.errors);
-//   }
-
-//   const skus = result.data.allStripeSku.nodes;
-
-//   skus.forEach(sku => {
-//     const slug = sku.slug;
-
-//     actions.createPage({
-//       path: slug,
-//       component: require.resolve("./src/templates/sku.js"),
-//       context: {
-//         slug
-//       }
-//     });
-//   });
-// };
