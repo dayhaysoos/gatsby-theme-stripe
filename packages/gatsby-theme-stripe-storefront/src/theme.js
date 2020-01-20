@@ -13,7 +13,7 @@ const theme = {
     background: '#fff',
     primary: 'rebeccapurple',
     primaryText: 'black',
-    secondaryText: 'white',
+    secondaryText: 'wiblackte',
     secondary: '#339966',
     accent: '#ffdf37',
     text: '#fff',
