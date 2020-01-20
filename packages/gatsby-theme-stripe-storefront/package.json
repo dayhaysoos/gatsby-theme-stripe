@@ -39,7 +39,7 @@
     "gatsby-plugin-theme-ui": "^0.2.41",
     "gatsby-source-filesystem": "^2.1.31",
     "gatsby-source-graphql": "^2.1.18",
-    "gatsby-theme-stripe-base": "^1.0.6",
+    "gatsby-theme-stripe-base": "^1.1.0",
     "gatsby-transformer-sharp": "^2.2.21",
     "gatsby-transformer-yaml": "^2.2.13",
     "numeral": "^2.0.6",
