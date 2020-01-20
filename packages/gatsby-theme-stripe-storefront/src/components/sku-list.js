@@ -40,10 +40,19 @@ const SkuList = () => {
 
   const skus = data.allStripeSku.nodes
 
+  const toCurrency = ({ price, currency }) => {
+    const formatted = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency,
+    }).format(price / 100)
+
+    return formatted
+  }
+
   return (
     <section sx={{ variant: 'ul.skuList' }}>
       {skus.map(sku => {
-        const { localImage, name, skuID, price } = sku
+        const { localImage, name, skuID, price, amount, currency } = sku
 
         return (
           <Card key={skuID} sx={{ variant: 'li.purchaseItem', border: 'none' }}>
@@ -78,7 +87,7 @@ const SkuList = () => {
                     display: 'block',
                   }}
                 >
-                  {price}
+                  {toCurrency({ price, currency })}
                 </span>
               </section>
               <section
