@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Link, navigate } from 'gatsby'
 import ShoppingCartIcon from './shopping-cart-icon'
 import { Menu, MenuItem, Button } from '@material-ui/core'
+import { MdMenu } from 'react-icons/md'
 import { useCart } from 'gatsby-theme-stripe-storefront/src/context/shopping-cart'
 import Logo from '../components/logo'
 
@@ -70,7 +71,7 @@ const Header = ({ links, logo }) => {
             color: 'primaryText',
           }}
         >
-          Menu
+          <MdMenu sx={{ color: 'primaryText' }} size={'2em'} />
         </Button>
         <Menu
           id="simple-menu"
@@ -81,7 +82,11 @@ const Header = ({ links, logo }) => {
           sx={{ display: 'flex', flexDirection: 'column' }}
         >
           {links.map(link => (
-            <MenuItem onClick={() => changeRoute(link === 'home' ? '/' : link)}>
+            <MenuItem
+              sx={{ width: '100%' }}
+              key={link}
+              onClick={() => changeRoute(link === 'home' ? '/' : link)}
+            >
               {link.toUpperCase()}
             </MenuItem>
           ))}
