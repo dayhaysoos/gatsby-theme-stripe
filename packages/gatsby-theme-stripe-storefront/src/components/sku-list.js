@@ -69,7 +69,8 @@ const SkuList = () => {
                 </div>
                 <span
                   sx={{
-                    color: 'secondaryText',
+                    fontFamily: 'body',
+                    color: 'primaryText',
                     fontWeight: 600,
                     letterSpacing: '2px',
                     height: '54px',
@@ -81,7 +82,7 @@ const SkuList = () => {
                 </span>
                 <span
                   sx={{
-                    color: 'secondaryText',
+                    color: 'primaryText',
                     fontWeight: 600,
                     letterSpacing: '2px',
                     display: 'block',
