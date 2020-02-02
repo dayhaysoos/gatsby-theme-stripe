@@ -11,9 +11,11 @@ const RightPane = () => {
     redirectToCheckout,
     cartCount,
   } = useCart()
-
   return (
-    <div css={{ overflowY: 'scroll', display: 'flex', flexDiretion: 'row' }}>
+    <div
+      aria-hidden={toggleRightMenu ? 'false' : 'true'}
+      css={{ overflowY: 'scroll', display: 'flex', flexDiretion: 'row' }}
+    >
       <aside
         sx={{
           variant: toggleRightMenu
