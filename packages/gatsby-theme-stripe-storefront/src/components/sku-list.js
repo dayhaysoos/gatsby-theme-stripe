@@ -49,7 +49,7 @@ const SkuList = () => {
           <Card key={skuID} sx={{ variant: 'li.purchaseItem', border: 'none' }}>
             <CardContent>
               <section sx={{ variant: 'section.itemDetails' }}>
-                <div
+                <section
                   sx={{
                     maxHeight: '200px',
                     height: '200px',
@@ -57,7 +57,7 @@ const SkuList = () => {
                   }}
                 >
                   <SkuImage size={200} image={localImage} name={name} />
-                </div>
+                </section>
                 <span
                   sx={{
                     color: 'secondaryText',
