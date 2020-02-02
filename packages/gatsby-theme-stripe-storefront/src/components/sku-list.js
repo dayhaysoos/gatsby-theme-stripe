@@ -52,7 +52,7 @@ const SkuList = () => {
   return (
     <section sx={{ variant: 'ul.skuList' }}>
       {skus.map(sku => {
-        const { localImage, name, skuID, price, amount, currency } = sku
+        const { localImage, name, skuID, price, currency } = sku
 
         return (
           <Card key={skuID} sx={{ variant: 'li.purchaseItem', border: 'none' }}>

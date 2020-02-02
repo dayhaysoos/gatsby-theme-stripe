@@ -5,12 +5,12 @@ import { jsx } from 'theme-ui'
 import Button from '@material-ui/core/Button'
 
 const AddItemButton = ({ sku }) => {
-  const { skuID, name } = sku
+  const { name } = sku
   const { addItem } = useCart()
 
   const handleClick = e => {
     e.preventDefault()
-    addItem({ skuID, quantity: 1 })
+    addItem({ ...sku, quantity: 1 })
   }
 
   return (

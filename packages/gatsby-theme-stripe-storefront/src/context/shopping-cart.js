@@ -41,6 +41,7 @@ const formatDetailedCart = (skus, checkoutData) => {
           price: skus[j].price,
           name: skus[j].name,
           number_price: skus[j].number_price,
+          currency: skus[j].currency,
         })
       }
     }

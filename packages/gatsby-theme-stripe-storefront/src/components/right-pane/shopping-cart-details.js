@@ -32,6 +32,15 @@ const ShoppingCartDetails = () => {
     redirectToCheckout('auto')
   }
 
+  const toCurrency = ({ price, currency }) => {
+    const formatted = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency,
+    }).format(price / 100)
+
+    return formatted
+  }
+
   return (
     <>
       <div
@@ -74,7 +83,14 @@ const ShoppingCartDetails = () => {
                 <div>
                   {values.items && values.items.length > 0 ? (
                     values.items.map(
-                      ({ quantity, name, price, localImage, sku }) => (
+                      ({
+                        quantity,
+                        name,
+                        price,
+                        localImage,
+                        sku,
+                        currency,
+                      }) => (
                         <section
                           key={sku}
                           sx={{ variant: 'cartDetails.itemContainer' }}
@@ -94,7 +110,9 @@ const ShoppingCartDetails = () => {
                               />
                             </div>
                             <p sx={{ color: 'secondary' }}>{name}</p>
-                            <p sx={{ color: 'secondary' }}>{price}</p>
+                            <p sx={{ color: 'secondary' }}>
+                              {toCurrency({ price, currency })}
+                            </p>
                           </div>
                           <div
                             css={{
