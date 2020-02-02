@@ -5,10 +5,14 @@ import Layout from '../components/layout'
 const ThankYou = () => {
   const isBrowser = typeof window !== 'undefined'
 
-  isBrowser ? window.localStorage.removeItem('skus') : null
+  if (isBrowser) {
+    window.localStorage.removeItem('skus')
+  }
 
   setTimeout(() => {
-    isBrowser ? (window.location.href = '/') : null
+    if (isBrowser) {
+      window.location.href = '/'
+    }
   }, 2000)
   return (
     <Layout>
