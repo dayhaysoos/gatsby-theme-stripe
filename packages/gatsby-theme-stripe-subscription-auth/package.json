@@ -35,7 +35,7 @@
     "gatsby-plugin-react-helmet": "^3.1.11",
     "gatsby-plugin-sharp": "^2.2.29",
     "gatsby-plugin-stripe": "^1.2.3",
-    "gatsby-plugin-theme-ui": "^0.2.41",
+    "gatsby-plugin-theme-ui": "^0.3.0",
     "gatsby-source-filesystem": "^2.1.31",
     "gatsby-source-graphql": "^2.1.18",
     "gatsby-theme-firebase": "^1.0.7",
@@ -45,7 +45,7 @@
     "react-helmet": "^5.2.1",
     "react-icons": "^3.7.0",
     "stripe": "^7.14.0",
-    "theme-ui": "^0.2.44",
+    "theme-ui": "^0.3.1",
     "yup": "^0.27.0"
   }
 }

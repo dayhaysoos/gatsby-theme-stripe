@@ -1,38 +1,47 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
-import { Formik, Field } from 'formik'
+import { jsx, Grid, Button } from 'theme-ui'
 import { formatPrice } from '../util/formatPrice'
 import { useDonate } from '../context/donate'
 
 const DonateList = ({ skus }) => {
   const { storeLastClicked, lastClicked, redirectToSkuCheckout } = useDonate()
-  console.log('skews', skus)
+
   return (
-    <section>
-      <h1>Donate list</h1>
-      <div sx={{ variant: 'planList.div' }}>
+    <section
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
+      <Grid gap={2} columns={3} sx={{ width: 380, marginBottom: '20px' }}>
         {skus.map(sku => (
-          <button
+          <Button
+            mr={2}
+            key={sku.id}
             type={'submit'}
             onClick={() => storeLastClicked(sku.skuID)}
             sx={{
               variant:
-                lastClicked === sku.skuID
+                lastClicked.lastClickedItem === sku.skuID
                   ? 'planList.button.lastClicked'
-                  : 'planList.button',
+                  : 'planList.button.notClicked',
             }}
-            key={sku.id}
           >
-            {`$${sku.price}`}
-          </button>
+            <p sx={{ margin: 0 }}>
+              {formatPrice({ price: sku.price, currency: sku.currency })}
+            </p>
+            <span>{sku.currency}</span>
+          </Button>
         ))}
-      </div>
-      <button
+      </Grid>
+      <Button
+        mt={20}
         onClick={() => redirectToSkuCheckout(lastClicked)}
-        sx={{ variant: 'planList.button.donateSubmit' }}
+        sx={{ color: 'text', bg: 'primary' }}
       >
         Donate Once
-      </button>
+      </Button>
     </section>
   )
 }

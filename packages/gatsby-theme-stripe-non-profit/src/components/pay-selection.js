@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import React, { useState } from 'react'
-import { Styled, jsx } from 'theme-ui'
+import { useState } from 'react'
+import { jsx, Button } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 import PlanList from '../components/plan-list'
 import DonateList from '../components/donate-list'
@@ -28,6 +28,7 @@ const PaySelection = () => {
           product
           usage_type
           planID
+          currency
         }
       }
       allStripeSku {
@@ -47,31 +48,56 @@ const PaySelection = () => {
   const skus = data.allStripeSku.nodes
 
   return (
-    <section sx={{ variant: 'section.donateForm' }}>
-      <section sx={{ variant: 'section.buttonWrapper' }}>
-        <Styled.h2>Choose amount to give</Styled.h2>
-        <button
-          css={{ width: 'initial' }}
+    <section
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '400px',
+        paddingBottom: '20px',
+      }}
+    >
+      <section
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          marginBottom: '20px',
+        }}
+      >
+        <div
           sx={{
-            variant: isSubscribing
-              ? 'planList.button'
-              : 'planList.button.lastClicked',
+            display: 'flex',
+            justifyContent: 'space-between',
+            width: '90%',
           }}
-          onClick={() => setState({ isSubscribing: false })}
         >
-          Give Once
-        </button>
-        <button
-          css={{ width: 'initial' }}
-          sx={{
-            variant: isSubscribing
-              ? 'planList.button.lastClicked'
-              : 'planList.button',
-          }}
-          onClick={() => setState({ isSubscribing: true })}
-        >
-          Monthly
-        </button>
+          <Button
+            sx={{
+              width: '50%',
+              textAlign: 'center',
+              variant: isSubscribing
+                ? 'planList.button'
+                : 'planList.button.lastClicked',
+            }}
+            onClick={() => setState({ isSubscribing: false })}
+          >
+            Give Once
+          </Button>
+          <Button
+            sx={{
+              width: '50%',
+              textAlign: 'center',
+              variant: isSubscribing
+                ? 'planList.button.lastClicked'
+                : 'planList.button.notClicked',
+            }}
+            onClick={() => setState({ isSubscribing: true })}
+          >
+            Monthly
+          </Button>
+        </div>
+        <h2>Choose amount to give</h2>
       </section>
       {isSubscribing ? <PlanList plans={plans} /> : <DonateList skus={skus} />}
     </section>

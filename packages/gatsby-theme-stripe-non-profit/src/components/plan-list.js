@@ -1,10 +1,7 @@
 /** @jsx jsx */
-import React from 'react'
-import { jsx } from 'theme-ui'
-import { Formik, Field } from 'formik'
+import { jsx, Grid, Button } from 'theme-ui'
+import { formatPrice } from '../util/formatPrice'
 import { useDonate } from '../context/donate'
-
-const formatPrice = price => price.toString().slice(0, -2)
 
 const PlanList = ({ plans }) => {
   const {
@@ -16,31 +13,44 @@ const PlanList = ({ plans }) => {
   } = useDonate()
 
   return (
-    <main sx={{ variant: 'planList.main' }}>
-      <div sx={{ variant: 'planList.div' }}>
+    <section
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
+      <Grid
+        gap={2}
+        columns={3}
+        sx={{ width: 380, marginBottom: '20px', backgroundColor: 'coral' }}
+      >
         {plans.map(plan => (
-          <button
+          <Button
             type={'submit'}
             onClick={() => storeLastClicked(plan)}
             sx={{
               variant:
-                lastClicked.planID === plan.planID
+                lastClicked.lastClickedItem === plan.planID
                   ? 'planList.button.lastClicked'
-                  : 'planList.button',
+                  : 'planList.button.notClicked',
             }}
             key={plan.id}
           >
-            {`$${formatPrice(plan.amount)}`}
-          </button>
+            <p sx={{ margin: 0 }}>
+              {formatPrice({ price: plan.amount, currency: plan.currency })}
+            </p>
+            <span>{plan.currency}</span>
+          </Button>
         ))}
-      </div>
-      <button
+      </Grid>
+      <Button
         onClick={() => redirectToPlanCheckout(lastClicked)}
-        sx={{ variant: 'planList.button.donateSubmit' }}
+        sx={{ color: 'text', bg: 'primary', marginTop: '20px' }}
       >
         Donate Monthly
-      </button>
-    </main>
+      </Button>
+    </section>
   )
 }
 

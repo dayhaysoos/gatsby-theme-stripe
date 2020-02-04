@@ -1,15 +1,14 @@
 import React, { createContext, useReducer, useContext } from 'react'
 
 const reducer = (donate, action) => {
-  const { lastClicked } = donate
-  const { plan } = action
+  const { lastClickedItem } = action
 
   switch (action.type) {
     case 'storeLastClicked':
       return {
         ...donate,
         lastClicked: {
-          ...plan,
+          lastClickedItem,
         },
       }
 
@@ -46,8 +45,9 @@ export const useDonate = () => {
   const { lastClicked, isPaying } = donate
 
   const redirectToPlanCheckout = async () => {
+    console.log('derp', lastClicked)
     const { error } = await stripe.redirectToCheckout({
-      items: [{ plan: lastClicked.planID, quantity: 1 }],
+      items: [{ plan: lastClicked.lastClickedItem, quantity: 1 }],
       successUrl: `http://localhost:8000/`,
       cancelUrl: `http://localhost:8000/`,
     })
@@ -55,13 +55,14 @@ export const useDonate = () => {
 
   const redirectToSkuCheckout = async sku => {
     const { error } = await stripe.redirectToCheckout({
-      items: [{ sku, quantity: 1 }],
+      items: [{ sku: sku.lastClickedItem, quantity: 1 }],
       successUrl: `http://localhost:8000/`,
       cancelUrl: `http://localhost:8000/`,
     })
   }
 
-  const storeLastClicked = plan => dispatch({ type: 'storeLastClicked', plan })
+  const storeLastClicked = lastClickedItem =>
+    dispatch({ type: 'storeLastClicked', lastClickedItem })
 
   const handlePaymentClick = plan => dispatch({ type: 'isPaying' })
 
