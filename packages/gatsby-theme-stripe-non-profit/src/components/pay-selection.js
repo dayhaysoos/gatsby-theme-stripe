@@ -55,6 +55,8 @@ const PaySelection = () => {
         alignItems: 'center',
         width: '400px',
         paddingBottom: '20px',
+        backgroundColor: 'lightgray',
+        pt: 20,
       }}
     >
       <section
@@ -77,7 +79,7 @@ const PaySelection = () => {
               width: '50%',
               textAlign: 'center',
               variant: isSubscribing
-                ? 'planList.button'
+                ? 'planList.button.notClicked'
                 : 'planList.button.lastClicked',
             }}
             onClick={() => setState({ isSubscribing: false })}

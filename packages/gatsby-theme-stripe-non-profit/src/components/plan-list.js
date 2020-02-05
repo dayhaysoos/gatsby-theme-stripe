@@ -20,11 +20,7 @@ const PlanList = ({ plans }) => {
         alignItems: 'center',
       }}
     >
-      <Grid
-        gap={2}
-        columns={3}
-        sx={{ width: 380, marginBottom: '20px', backgroundColor: 'coral' }}
-      >
+      <Grid gap={2} columns={3} sx={{ width: 380, marginBottom: '20px' }}>
         {plans.map(plan => (
           <Button
             type={'submit'}
@@ -45,8 +41,9 @@ const PlanList = ({ plans }) => {
         ))}
       </Grid>
       <Button
+        mt={20}
         onClick={() => redirectToPlanCheckout(lastClicked)}
-        sx={{ color: 'text', bg: 'primary', marginTop: '20px' }}
+        sx={{ color: 'text', bg: 'primary' }}
       >
         Donate Monthly
       </Button>
