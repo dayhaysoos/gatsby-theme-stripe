@@ -17,6 +17,7 @@ const DonateList = ({ skus }) => {
       <Grid gap={2} columns={3} sx={{ width: 380, marginBottom: '20px' }}>
         {skus.map(sku => (
           <Button
+            color={lastClicked.lastClickedItem === sku.skuID ? 'white' : 'gray'}
             mr={2}
             key={sku.id}
             type={'submit'}

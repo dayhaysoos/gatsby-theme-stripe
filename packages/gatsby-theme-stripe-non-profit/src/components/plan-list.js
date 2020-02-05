@@ -23,8 +23,11 @@ const PlanList = ({ plans }) => {
       <Grid gap={2} columns={3} sx={{ width: 380, marginBottom: '20px' }}>
         {plans.map(plan => (
           <Button
+            color={
+              lastClicked.lastClickedItem === plan.planID ? 'white' : 'gray'
+            }
             type={'submit'}
-            onClick={() => storeLastClicked(plan)}
+            onClick={() => storeLastClicked(plan.planID)}
             sx={{
               variant:
                 lastClicked.lastClickedItem === plan.planID

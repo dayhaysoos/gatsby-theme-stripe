@@ -75,6 +75,7 @@ const PaySelection = () => {
           }}
         >
           <Button
+            color={isSubscribing ? 'gray' : 'white'}
             sx={{
               width: '50%',
               textAlign: 'center',
@@ -87,6 +88,7 @@ const PaySelection = () => {
             Give Once
           </Button>
           <Button
+            color={isSubscribing ? 'white' : 'gray'}
             sx={{
               width: '50%',
               textAlign: 'center',

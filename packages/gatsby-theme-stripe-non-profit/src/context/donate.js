@@ -45,7 +45,6 @@ export const useDonate = () => {
   const { lastClicked, isPaying } = donate
 
   const redirectToPlanCheckout = async () => {
-    console.log('derp', lastClicked)
     const { error } = await stripe.redirectToCheckout({
       items: [{ plan: lastClicked.lastClickedItem, quantity: 1 }],
       successUrl: `http://localhost:8000/`,

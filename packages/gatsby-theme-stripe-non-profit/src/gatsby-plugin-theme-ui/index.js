@@ -22,19 +22,19 @@ const theme = {
     secondary: '#30c',
     muted: '#f6f6f6',
   },
-  buttons: {
-    primary: {
-      color: 'background',
-      bg: 'primary',
-      '&:hover': {
-        bg: 'text',
-      },
-    },
-    secondary: {
-      color: 'background',
-      bg: 'secondary',
-    },
-  },
+  // buttons: {
+  //   primary: {
+  //     color: 'background',
+  //     bg: 'primary',
+  //     '&:hover': {
+  //       bg: 'text',
+  //     },
+  //   },
+  //   secondary: {
+  //     color: 'background',
+  //     bg: 'secondary',
+  //   },
+  // },
   planList: {
     button: {
       lastClicked: {
@@ -42,8 +42,8 @@ const theme = {
         color: 'text',
       },
       notClicked: {
-        backgroundColor: 'secondary',
-        color: 'text',
+        backgroundColor: 'muted',
+        color: 'blue',
       },
     },
   },
