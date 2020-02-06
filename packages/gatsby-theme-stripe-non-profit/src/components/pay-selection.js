@@ -17,7 +17,6 @@ const PaySelection = () => {
       allStripePlan {
         nodes {
           id
-          name
           amount
           amount_decimal
           billing_scheme
