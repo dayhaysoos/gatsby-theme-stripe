@@ -100,7 +100,7 @@ const PaySelection = () => {
             Monthly
           </Button>
         </div>
-        <h2>Choose amount to give</h2>
+        <h2>Choose amount to give {isSubscribing ? 'monthly' : 'once'}</h2>
       </section>
       {isSubscribing ? <PlanList plans={plans} /> : <DonateList skus={skus} />}
     </section>
