@@ -16,22 +16,22 @@ exports.createSchemaCustomization = ({ actions }) => {
 
   createTypes(`
 
-  type Attribute implements Node {
+  type SkuAttribute implements Node {
     id: ID!
     name: String!
   }
 
-  type MetaData implements Node {
+  type SkuMetaData implements Node {
     id: ID!
   }
 
   type StripeSku implements Node {
     id: ID!
     object: String
-    attributes: Attribute
+    attributes: SkuAttribute
     currency: String!
     image: String
-    metadata: MetaData!
+    metadata: SkuMetaData!
     price: String!
     product: String!
     skuID: String!

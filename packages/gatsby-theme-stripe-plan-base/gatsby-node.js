@@ -16,12 +16,12 @@ exports.createSchemaCustomization = ({ actions }) => {
 
   createTypes(`
 
-  type Attribute implements Node {
+  type PlanAttribute implements Node {
     id: ID!
     name: String!
   }
 
-  type MetaData implements Node {
+  type PlanMetaData implements Node {
     id: ID!
   }
 
