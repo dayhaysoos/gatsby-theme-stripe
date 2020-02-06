@@ -30,10 +30,10 @@
     "gatsby-plugin-material-ui": "^2.1.6",
     "gatsby-plugin-page-creator": "^2.1.25",
     "gatsby-plugin-react-helmet": "^3.1.11",
-    "gatsby-plugin-theme-ui": "^0.2.41",
+    "gatsby-plugin-theme-ui": "^0.3.0",
     "gatsby-source-filesystem": "^2.1.31",
     "react-helmet": "^5.2.1",
     "react-icons": "^3.7.0",
-    "theme-ui": "^0.2.44"
+    "theme-ui": "^0.3.1"
   }
 }

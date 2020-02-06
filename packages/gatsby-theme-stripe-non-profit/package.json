@@ -1,6 +1,6 @@
 {
-  "name": "gatsby-theme-stripe-storefront",
-  "version": "1.7.5",
+  "name": "gatsby-theme-stripe-non-profit",
+  "version": "0.0.1",
   "author": {
     "name": "Nick DeJesus",
     "url": "https://www.twitter.com/dayhaysoos",
@@ -12,7 +12,8 @@
     "stripe",
     "e-commerce",
     "shopping-cart",
-    "theme-ui"
+    "theme-ui",
+    "non-profit"
   ],
   "scripts": {
     "build": "gatsby build",
@@ -30,16 +31,11 @@
     "react-dom": "^16.9.0"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.17",
     "@emotion/styled": "^10.0.17",
-    "@material-ui/core": "^4.4.3",
-    "@material-ui/styles": "^4.4.3",
-    "@mdx-js/react": "^1.5.1",
     "axios": "^0.19.0",
     "dotenv": "^8.1.0",
     "formik": "^1.5.8",
     "gatsby-image": "^2.2.27",
-    "gatsby-plugin-material-ui": "^2.1.6",
     "gatsby-plugin-page-creator": "^2.1.25",
     "gatsby-plugin-react-helmet": "^3.1.11",
     "gatsby-plugin-sharp": "^2.2.29",
@@ -47,7 +43,8 @@
     "gatsby-plugin-theme-ui": "^0.3.0",
     "gatsby-source-filesystem": "^2.1.31",
     "gatsby-source-graphql": "^2.1.18",
-    "gatsby-theme-stripe-base": "^1.1.0",
+    "gatsby-theme-stripe-base": "*",
+    "gatsby-theme-stripe-plan-base": "*",
     "gatsby-transformer-sharp": "^2.2.21",
     "gatsby-transformer-yaml": "^2.2.13",
     "numeral": "^2.0.6",

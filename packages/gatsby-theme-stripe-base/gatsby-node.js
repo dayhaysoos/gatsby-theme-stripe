@@ -6,32 +6,27 @@ require('dotenv').config({
 
 const axios = require('axios')
 
-const formatPrice = num => {
-  const price = (num / 100).toFixed(2)
-  return `$${price}`
-}
-
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
 
   createTypes(`
 
-  type Attribute implements Node {
+  type SkuAttribute implements Node {
     id: ID!
     name: String!
   }
 
-  type MetaData implements Node {
+  type SkuMetaData implements Node {
     id: ID!
   }
 
   type StripeSku implements Node {
     id: ID!
     object: String
-    attributes: Attribute
+    attributes: SkuAttribute
     currency: String!
     image: String
-    metadata: MetaData!
+    metadata: SkuMetaData!
     price: String!
     product: String!
     skuID: String!

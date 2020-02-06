@@ -1,7 +1,6 @@
 {
-  "name": "gatsby-starter-stripe-storefront",
+  "name": "non-profit-site",
   "version": "1.0.0",
-  "author": "Nick DeJesus",
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
@@ -11,7 +10,7 @@
   "dependencies": {
     "deepmerge": "^4.1.1",
     "gatsby": "^2.15.15",
-    "gatsby-theme-stripe-storefront": "*",
+    "gatsby-theme-stripe-non-profit": "*",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   }

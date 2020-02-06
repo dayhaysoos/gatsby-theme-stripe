@@ -16,12 +16,12 @@ exports.createSchemaCustomization = ({ actions }) => {
 
   createTypes(`
 
-  type Attribute implements Node {
+  type PlanAttribute implements Node {
     id: ID!
     name: String!
   }
 
-  type MetaData implements Node {
+  type PlanMetaData implements Node {
     id: ID!
   }
 
@@ -85,7 +85,6 @@ exports.sourceNodes = async ({
     const node = {
       ...plan,
       number_amount: plan.amount,
-      amount: formatPrice(plan.amount),
       planID: plan.id,
       id: createNodeId(`Stripe-${plan.id}`),
       name: plan.nickname,
@@ -127,49 +126,5 @@ exports.sourceNodes = async ({
 
       actions.createNode(node)
     })
-
-    // create pages for each item
-
-    // exports.createPages = async ({ actions, graphql, reporter }, options) => {
-    //   const basePath = options.basePath || "/";
-
-    //   actions.createPage({
-    //     path: basePath,
-    //     component: require.resolve("./src/templates/donate-form.js")
-    //   });
-
-    //   const result = await graphql(`
-    //     query {
-    //       allStripeSku {
-    //         nodes {
-    //           name
-    //           price
-    //           currency
-    //           slug
-    //           image
-    //           skuID
-    //         }
-    //       }
-    //     }
-    //   `);
-
-    //   if (result.erros) {
-    //     reporter.panic("error loading products", reporter.errors);
-    //   }
-
-    //   const skus = result.data.allStripeSku.nodes;
-
-    //   skus.forEach(sku => {
-    //     const slug = sku.slug;
-
-    //     actions.createPage({
-    //       path: slug,
-    //       component: require.resolve("./src/templates/sku.js"),
-    //       context: {
-    //         slug
-    //       }
-    //     });
-    //   });
-    // };
   }
 }
