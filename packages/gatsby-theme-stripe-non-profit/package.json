@@ -1,6 +1,6 @@
 {
   "name": "gatsby-theme-stripe-non-profit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "Nick DeJesus",
     "url": "https://www.twitter.com/dayhaysoos",
@@ -43,8 +43,8 @@
     "gatsby-plugin-theme-ui": "^0.3.0",
     "gatsby-source-filesystem": "^2.1.31",
     "gatsby-source-graphql": "^2.1.18",
-    "gatsby-theme-stripe-base": "*",
-    "gatsby-theme-stripe-plan-base": "*",
+    "gatsby-theme-stripe-base": "1.2.0",
+    "gatsby-theme-stripe-plan-base": "1.1.0",
     "gatsby-transformer-sharp": "^2.2.21",
     "gatsby-transformer-yaml": "^2.2.13",
     "numeral": "^2.0.6",
