@@ -6,11 +6,6 @@ require('dotenv').config({
 
 const axios = require('axios')
 
-const formatPrice = num => {
-  const price = (num / 100).toFixed(2)
-  return `$${price}`
-}
-
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
 
