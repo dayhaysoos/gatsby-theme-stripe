@@ -43,7 +43,7 @@ const theme = {
       },
       notClicked: {
         backgroundColor: 'muted',
-        color: 'blue',
+        color: 'gray',
       },
     },
   },

@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { useState } from 'react'
-import { jsx, Button } from 'theme-ui'
+import { jsx, Button, Box } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 import PlanList from '../components/plan-list'
 import DonateList from '../components/donate-list'
@@ -47,15 +47,14 @@ const PaySelection = () => {
   const skus = data.allStripeSku.nodes
 
   return (
-    <section
+    <Box
       sx={{
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         width: '400px',
-        paddingBottom: '20px',
-        backgroundColor: 'lightgray',
-        pt: 20,
+        padding: '20px',
+        backgroundColor: 'rgba(0,0,0, .7)',
       }}
     >
       <section
@@ -64,20 +63,24 @@ const PaySelection = () => {
           flexDirection: 'column',
           alignItems: 'center',
           marginBottom: '20px',
+          width: '100%',
         }}
       >
         <div
           sx={{
             display: 'flex',
             justifyContent: 'space-between',
-            width: '90%',
+            width: '100%',
+            marginBottom: '20px',
           }}
         >
           <Button
             color={isSubscribing ? 'gray' : 'white'}
             sx={{
-              width: '50%',
+              width: '100%',
               textAlign: 'center',
+              borderTopRightRadius: 0,
+              borderBottomRightRadius: 0,
               variant: isSubscribing
                 ? 'planList.button.notClicked'
                 : 'planList.button.lastClicked',
@@ -89,8 +92,10 @@ const PaySelection = () => {
           <Button
             color={isSubscribing ? 'white' : 'gray'}
             sx={{
-              width: '50%',
+              width: '100%',
               textAlign: 'center',
+              borderTopLeftRadius: 0,
+              borderBottomLeftRadius: 0,
               variant: isSubscribing
                 ? 'planList.button.lastClicked'
                 : 'planList.button.notClicked',
@@ -100,10 +105,10 @@ const PaySelection = () => {
             Monthly
           </Button>
         </div>
-        <h2>Choose amount to give {isSubscribing ? 'monthly' : 'once'}</h2>
+        <h2>Give {isSubscribing ? 'monthly' : 'once'}</h2>
       </section>
       {isSubscribing ? <PlanList plans={plans} /> : <DonateList skus={skus} />}
-    </section>
+    </Box>
   )
 }
 
