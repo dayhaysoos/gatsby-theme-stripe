@@ -26,12 +26,13 @@ const reducer = (donate, action) => {
 
 const DonateContext = createContext()
 
-export const DonateProvider = ({ children, stripe }) => (
+export const DonateProvider = ({ children, stripe, successUrl }) => (
   <DonateContext.Provider
     value={useReducer(reducer, {
       lastClicked: {},
       isPaying: false,
       stripe,
+      successUrl,
     })}
   >
     {children}
@@ -40,14 +41,12 @@ export const DonateProvider = ({ children, stripe }) => (
 
 export const useDonate = () => {
   const [donate, dispatch] = useContext(DonateContext)
-  const { stripe } = donate
-
-  const { lastClicked, isPaying } = donate
+  const { stripe, lastClicked, isPaying, successUrl } = donate
 
   const redirectToPlanCheckout = async () => {
     const { error } = await stripe.redirectToCheckout({
       items: [{ plan: lastClicked.lastClickedItem, quantity: 1 }],
-      successUrl: `http://localhost:8000/`,
+      successUrl: successUrl,
       cancelUrl: `http://localhost:8000/`,
     })
   }
@@ -55,7 +54,7 @@ export const useDonate = () => {
   const redirectToSkuCheckout = async sku => {
     const { error } = await stripe.redirectToCheckout({
       items: [{ sku: sku.lastClickedItem, quantity: 1 }],
-      successUrl: `http://localhost:8000/`,
+      successUrl: successUrl,
       cancelUrl: `http://localhost:8000/`,
     })
   }

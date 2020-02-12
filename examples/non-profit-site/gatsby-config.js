@@ -8,6 +8,7 @@ module.exports = {
       resolve: 'gatsby-theme-stripe-non-profit',
       options: {
         stripePublicKey: process.env.STRIPE_API_PUBLIC,
+        successUrl: 'https://gatsbyjs.com',
       },
     },
   ],
