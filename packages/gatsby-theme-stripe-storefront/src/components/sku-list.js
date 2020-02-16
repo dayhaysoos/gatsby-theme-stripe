@@ -1,10 +1,8 @@
 /** @jsx jsx */
-import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import { jsx } from 'theme-ui'
+import { jsx, Card, Box, Grid, Flex } from 'theme-ui'
 import AddItemButton from './add-item-button'
 import SkuImage from './sku-list/sku-image'
-import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 
 const SkuList = () => {
@@ -19,17 +17,19 @@ const SkuList = () => {
           skuID
           localImage {
             childImageSharp {
-              fixed(height: 200, width: 200) {
+              fluid {
                 base64
                 tracedSVG
                 aspectRatio
-                width
-                height
                 src
                 srcSet
                 srcWebp
                 srcSetWebp
+                sizes
+                originalImg
                 originalName
+                presentationWidth
+                presentationHeight
               }
             }
           }
@@ -50,37 +50,43 @@ const SkuList = () => {
   }
 
   return (
-    <section sx={{ variant: 'ul.skuList' }}>
+    <Grid p={20} columns={[1, 2, 4]}>
       {skus.map(sku => {
         const { localImage, name, skuID, price, currency } = sku
 
         return (
-          <Card key={skuID} sx={{ variant: 'li.purchaseItem', border: 'none' }}>
-            <CardContent>
-              <section sx={{ variant: 'section.itemDetails' }}>
-                <section
-                  sx={{
-                    maxHeight: '200px',
-                    height: '200px',
-                    marginBottom: '20px',
-                  }}
-                >
-                  <SkuImage size={200} image={localImage} name={name} />
-                </section>
-                <span
+          <Flex
+            sx={{
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Card sx={{ width: '100%', p: 20 }} key={skuID}>
+              <div>
+                <SkuImage image={localImage} name={name} />
+              </div>
+              <Flex
+                sx={{
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  bg: 'secondary',
+                  paddingBottom: 20,
+                }}
+              >
+                <p
                   sx={{
                     fontFamily: 'body',
                     color: 'primaryText',
                     fontWeight: 600,
                     letterSpacing: '2px',
-                    height: '54px',
                     display: 'block',
-                    marginBottom: '20px',
                   }}
                 >
                   {name}
-                </span>
-                <span
+                </p>
+                <p
                   sx={{
                     color: 'primaryText',
                     fontWeight: 600,
@@ -89,18 +95,65 @@ const SkuList = () => {
                   }}
                 >
                   {toCurrency({ price, currency })}
-                </span>
-              </section>
-              <section
-                sx={{ variant: 'section.buttonWrapper', marginTop: '20px' }}
-              >
+                </p>
                 <AddItemButton sku={sku} />
-              </section>
-            </CardContent>
-          </Card>
+              </Flex>
+            </Card>
+          </Flex>
         )
       })}
-    </section>
+    </Grid>
+    // <section sx={{ variant: 'ul.skuList' }}>
+    //   {skus.map(sku => {
+    //     const { localImage, name, skuID, price, currency } = sku
+
+    //     return (
+    //       <Card key={skuID} sx={{ variant: 'li.purchaseItem', border: 'none' }}>
+    //         <CardContent>
+    //           <section sx={{ variant: 'section.itemDetails' }}>
+    //             <section
+    //               sx={{
+    //                 maxHeight: '200px',
+    //                 height: '200px',
+    //                 marginBottom: '20px',
+    //               }}
+    //             >
+    //               <SkuImage size={200} image={localImage} name={name} />
+    //             </section>
+    //             <span
+    //               sx={{
+    //                 fontFamily: 'body',
+    //                 color: 'primaryText',
+    //                 fontWeight: 600,
+    //                 letterSpacing: '2px',
+    //                 height: '54px',
+    //                 display: 'block',
+    //                 marginBottom: '20px',
+    //               }}
+    //             >
+    //               {name}
+    //             </span>
+    //             <span
+    //               sx={{
+    //                 color: 'primaryText',
+    //                 fontWeight: 600,
+    //                 letterSpacing: '2px',
+    //                 display: 'block',
+    //               }}
+    //             >
+    //               {toCurrency({ price, currency })}
+    //             </span>
+    //           </section>
+    //           <section
+    //             sx={{ variant: 'section.buttonWrapper', marginTop: '20px' }}
+    //           >
+    //             <AddItemButton sku={sku} />
+    //           </section>
+    //         </CardContent>
+    //       </Card>
+    //     )
+    //   })}
+    // </section>
   )
 }
 

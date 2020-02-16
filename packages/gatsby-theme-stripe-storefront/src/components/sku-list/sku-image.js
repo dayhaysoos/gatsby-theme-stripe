@@ -11,11 +11,7 @@ const SkuImage = ({ image, name, size }) => {
       {image === null ? (
         <FaImage size={size} />
       ) : (
-        <Img
-          alt={name}
-          sx={{ variant: 'img.skuList' }}
-          fixed={image.childImageSharp.fixed}
-        />
+        <Img alt={name} fluid={image.childImageSharp.fluid} />
       )}
     </>
   )

@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import React from 'react'
 import { useCart } from '../context/shopping-cart'
-import { jsx } from 'theme-ui'
-import Button from '@material-ui/core/Button'
+import { jsx, Button } from 'theme-ui'
 
 const AddItemButton = ({ sku }) => {
   const { name } = sku
@@ -17,7 +16,7 @@ const AddItemButton = ({ sku }) => {
     <Button
       arial-label={`Add ${name} to cart`}
       variant={'contained'}
-      sx={{ variant: 'button.cart' }}
+      sx={{ variant: 'button.cart', height: 50, width: '50%' }}
       onClick={handleClick}
     >
       Add to Cart

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { Header as ThemeHeader, jsx } from 'theme-ui'
+import { jsx, Box } from 'theme-ui'
 import { useState } from 'react'
 import { Link, navigate } from 'gatsby'
 import ShoppingCartIcon from './shopping-cart-icon'
@@ -27,7 +27,17 @@ const Header = ({ links, logo }) => {
     navigate(route)
   }
   return (
-    <ThemeHeader>
+    <Box
+      sx={{
+        color: 'text',
+        backgroundColor: 'primary',
+        fontWeight: 'bold',
+        margin: '0 auto',
+        padding: 10,
+        width: 'default',
+        justifyContent: 'space-between',
+      }}
+    >
       <div
         sx={{
           display: 'flex',
@@ -94,7 +104,7 @@ const Header = ({ links, logo }) => {
         <Logo logo={logo} />
         <ShoppingCartIcon />
       </div>
-    </ThemeHeader>
+    </Box>
   )
 }
 
