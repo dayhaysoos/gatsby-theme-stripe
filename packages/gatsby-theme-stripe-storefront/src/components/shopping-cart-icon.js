@@ -45,7 +45,7 @@ const ShoppingCartIcon = () => {
             height: '24px',
             width: '24px',
             backgroundColor: 'accent',
-            color: 'text',
+            color: 'primaryText',
             fontSize: '.75rem',
           }}
         >

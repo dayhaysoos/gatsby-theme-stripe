@@ -29,7 +29,7 @@ const Header = ({ links, logo }) => {
   return (
     <Box
       sx={{
-        color: 'text',
+        color: 'primaryText',
         backgroundColor: 'primary',
         fontWeight: 'bold',
         margin: '0 auto',
@@ -52,7 +52,7 @@ const Header = ({ links, logo }) => {
           <Link
             key={link}
             sx={{
-              color: 'text',
+              color: 'primaryText',
               display: 'flex',
               alignItems: 'center',
             }}

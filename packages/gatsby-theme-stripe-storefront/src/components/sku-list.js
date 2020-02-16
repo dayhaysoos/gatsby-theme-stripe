@@ -50,7 +50,7 @@ const SkuList = () => {
   }
 
   return (
-    <Grid p={20} columns={[1, 2, 4]}>
+    <Grid gap={2} columns={[1, 2, 4]}>
       {skus.map(sku => {
         const { localImage, name, skuID, price, currency } = sku
 
@@ -62,7 +62,7 @@ const SkuList = () => {
               alignItems: 'center',
             }}
           >
-            <Card sx={{ width: '100%', p: 20 }} key={skuID}>
+            <Card sx={{ width: '100%', maxWidth: 300 }} key={skuID}>
               <div>
                 <SkuImage image={localImage} name={name} />
               </div>
@@ -73,6 +73,7 @@ const SkuList = () => {
                   alignItems: 'center',
                   bg: 'secondary',
                   paddingBottom: 20,
+                  flexWrap: 'wrap',
                 }}
               >
                 <p
@@ -82,6 +83,7 @@ const SkuList = () => {
                     fontWeight: 600,
                     letterSpacing: '2px',
                     display: 'block',
+                    fontSize: [null, '14px', '18px'],
                   }}
                 >
                   {name}
@@ -92,6 +94,8 @@ const SkuList = () => {
                     fontWeight: 600,
                     letterSpacing: '2px',
                     display: 'block',
+                    marginTop: 0,
+                    fontSize: [null, '14px', '18px'],
                   }}
                 >
                   {toCurrency({ price, currency })}

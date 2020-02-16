@@ -16,7 +16,17 @@ const AddItemButton = ({ sku }) => {
     <Button
       arial-label={`Add ${name} to cart`}
       variant={'contained'}
-      sx={{ variant: 'button.cart', height: 50, width: '50%' }}
+      sx={{
+        height: 50,
+        width: '50%',
+        minWidth: 125,
+        backgroundColor: 'primary',
+        color: 'primaryText',
+        '&:hover': {
+          backgroundColor: 'accent',
+          borderColor: 'secondary',
+        },
+      }}
       onClick={handleClick}
     >
       Add to Cart

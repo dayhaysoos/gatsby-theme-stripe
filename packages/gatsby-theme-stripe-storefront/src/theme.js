@@ -1,4 +1,5 @@
 const theme = {
+  breakpoints: ['40em', '60em', '70em'],
   space: [0, 4, 8, 1, 32],
   fonts: {
     body: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
@@ -9,14 +10,16 @@ const theme = {
     heading: 1.1,
   },
   colors: {
+    text: '#000',
+    background: '#fff',
+    primary: '#07c',
+    secondary: '#30c',
+    muted: '#f6f6f6',
     gray: ['#efefef', '#ddd', '#333', '#111'],
     background: '#fff',
-    primary: 'rebeccapurple',
-    primaryText: 'black',
+    primaryText: '#fff',
     secondaryText: 'wiblackte',
-    secondary: '#339966',
-    accent: '#ffdf37',
-    text: '#fff',
+    accent: '#cc00ff',
     hightlight: 'yellow',
   },
   sizes: {
@@ -167,7 +170,7 @@ const theme = {
       minWidth: '70px',
     },
     donationOption: {
-      color: 'primary',
+      color: 'primaryText',
       backgroundColor: 'gray.1',
       height: '50px',
       borderRadius: '5px',
@@ -176,7 +179,7 @@ const theme = {
     },
     cart: {
       backgroundColor: 'primary',
-      color: 'text',
+      color: 'primaryText',
       fontSize: '16px',
       '&:hover': {
         backgroundColor: 'secondary',
@@ -203,7 +206,7 @@ const theme = {
     },
     checkout: {
       backgroundColor: 'primary',
-      color: 'text',
+      color: 'primaryText',
       height: '40px',
       borderRadius: '10px',
       fontSize: '16px',
@@ -217,7 +220,7 @@ const theme = {
       },
       addRemove: {
         backgroundColor: 'primary',
-        color: 'text',
+        color: 'primaryText',
         fontSize: '18px',
         transition: 'all .5s ease',
         outline: 'none',
