@@ -38,7 +38,7 @@ const ShoppingCartIcon = () => {
             alignItems: 'center',
             position: 'absolute',
             right: '2px',
-            bottom: '15px',
+            bottom: ['35px', '15px', '15px'],
             border: '1px solid',
             borderColor: 'accent',
             borderRadius: '50%',

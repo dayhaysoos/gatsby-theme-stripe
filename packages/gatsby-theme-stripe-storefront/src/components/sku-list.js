@@ -50,7 +50,7 @@ const SkuList = () => {
   }
 
   return (
-    <Grid gap={2} columns={[1, 2, 4]}>
+    <Grid mt={40} mb={40} gap={2} columns={[1, 2, 4]}>
       {skus.map(sku => {
         const { localImage, name, skuID, price, currency } = sku
 
@@ -79,7 +79,7 @@ const SkuList = () => {
                 <p
                   sx={{
                     fontFamily: 'body',
-                    color: 'primaryText',
+                    color: 'accent',
                     fontWeight: 600,
                     letterSpacing: '2px',
                     display: 'block',
@@ -90,7 +90,7 @@ const SkuList = () => {
                 </p>
                 <p
                   sx={{
-                    color: 'primaryText',
+                    color: 'accent',
                     fontWeight: 600,
                     letterSpacing: '2px',
                     display: 'block',
@@ -107,57 +107,6 @@ const SkuList = () => {
         )
       })}
     </Grid>
-    // <section sx={{ variant: 'ul.skuList' }}>
-    //   {skus.map(sku => {
-    //     const { localImage, name, skuID, price, currency } = sku
-
-    //     return (
-    //       <Card key={skuID} sx={{ variant: 'li.purchaseItem', border: 'none' }}>
-    //         <CardContent>
-    //           <section sx={{ variant: 'section.itemDetails' }}>
-    //             <section
-    //               sx={{
-    //                 maxHeight: '200px',
-    //                 height: '200px',
-    //                 marginBottom: '20px',
-    //               }}
-    //             >
-    //               <SkuImage size={200} image={localImage} name={name} />
-    //             </section>
-    //             <span
-    //               sx={{
-    //                 fontFamily: 'body',
-    //                 color: 'primaryText',
-    //                 fontWeight: 600,
-    //                 letterSpacing: '2px',
-    //                 height: '54px',
-    //                 display: 'block',
-    //                 marginBottom: '20px',
-    //               }}
-    //             >
-    //               {name}
-    //             </span>
-    //             <span
-    //               sx={{
-    //                 color: 'primaryText',
-    //                 fontWeight: 600,
-    //                 letterSpacing: '2px',
-    //                 display: 'block',
-    //               }}
-    //             >
-    //               {toCurrency({ price, currency })}
-    //             </span>
-    //           </section>
-    //           <section
-    //             sx={{ variant: 'section.buttonWrapper', marginTop: '20px' }}
-    //           >
-    //             <AddItemButton sku={sku} />
-    //           </section>
-    //         </CardContent>
-    //       </Card>
-    //     )
-    //   })}
-    // </section>
   )
 }
 
