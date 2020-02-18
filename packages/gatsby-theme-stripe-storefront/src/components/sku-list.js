@@ -62,7 +62,14 @@ const SkuList = () => {
               alignItems: 'center',
             }}
           >
-            <Card sx={{ width: '100%', maxWidth: 300 }} key={skuID}>
+            <Card
+              sx={{
+                width: '100%',
+                maxWidth: 300,
+                backgroundColor: 'white',
+              }}
+              key={skuID}
+            >
               <div>
                 <SkuImage image={localImage} name={name} />
               </div>
