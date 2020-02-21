@@ -8,7 +8,11 @@ import Footer from './footer'
 
 const Layout = ({ children }) => (
   <Box>
-    <Header links={['home', 'products', 'about']} logo={logo} />
+    <Header
+      backgroundColor={'transparent'}
+      links={['home', 'products', 'about']}
+      logo={logo}
+    />
     <RightPane />
     <main>{children}</main>
     <Footer />

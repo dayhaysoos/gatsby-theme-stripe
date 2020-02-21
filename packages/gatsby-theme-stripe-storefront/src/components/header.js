@@ -8,7 +8,7 @@ import { MdMenu } from 'react-icons/md'
 import { useCart } from 'gatsby-theme-stripe-storefront/src/context/shopping-cart'
 import Logo from '../components/logo'
 
-const Header = ({ links, logo }) => {
+const Header = ({ links, logo, backgroundColor }) => {
   const { handleCloseCart } = useCart()
   const [anchorEl, setAnchorEl] = useState(null)
 
@@ -30,7 +30,7 @@ const Header = ({ links, logo }) => {
     <Box
       sx={{
         color: 'primaryText',
-        backgroundColor: 'primary',
+        backgroundColor,
         fontWeight: 'bold',
         margin: '0 auto',
         padding: 10,
