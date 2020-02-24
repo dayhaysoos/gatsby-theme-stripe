@@ -14,7 +14,7 @@ const Layout = ({ children }) => (
       logo={logo}
     />
     <RightPane />
-    <main>{children}</main>
+    <main sx={{ padding: 8, overflowX: 'hidden' }}>{children}</main>
     <Footer />
   </Box>
 )
