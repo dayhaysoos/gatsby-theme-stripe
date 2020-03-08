@@ -1,4 +1,4 @@
-# Gatsby Starter Stripe Storefront
+# Gatsby Starter Stripe Base
 
 ## WARNING!!!
 
