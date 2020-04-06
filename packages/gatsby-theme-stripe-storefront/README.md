@@ -9,6 +9,10 @@ This only works for Stripe's new Checkout API. If you create your products with 
 
 - Creates GraphQL Nodes based off Stripe Product API
 
+# Install 
+
+`yarn add gatsby-theme-stripe-storefront`
+
 # Usage
 
 
