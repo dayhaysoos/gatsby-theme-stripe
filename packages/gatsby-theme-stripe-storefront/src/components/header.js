@@ -5,14 +5,14 @@ import { Link, navigate } from 'gatsby'
 import ShoppingCartIcon from './shopping-cart-icon'
 import { Menu, MenuItem, Button } from '@material-ui/core'
 import { MdMenu } from 'react-icons/md'
-import { useCart } from 'gatsby-theme-stripe-storefront/src/context/shopping-cart'
+import { useShoppingCart } from 'use-shopping-cart'
 import Logo from '../components/logo'
 
 const Header = ({ links, logo, backgroundColor }) => {
-  const { handleCloseCart } = useCart()
+  const { handleCloseCart, shouldDisplayCart } = useShoppingCart()
   const [anchorEl, setAnchorEl] = useState(null)
 
-  const handleClick = e => {
+  const handleClick = (e) => {
     handleCloseCart()
     setAnchorEl(e.currentTarget)
   }
@@ -22,7 +22,7 @@ const Header = ({ links, logo, backgroundColor }) => {
     setAnchorEl(null)
   }
 
-  const changeRoute = route => {
+  const changeRoute = (route) => {
     handleCloseCart()
     navigate(route)
   }
@@ -48,7 +48,7 @@ const Header = ({ links, logo, backgroundColor }) => {
           },
         }}
       >
-        {links.map(link => (
+        {links.map((link) => (
           <Link
             key={link}
             sx={{
@@ -56,7 +56,7 @@ const Header = ({ links, logo, backgroundColor }) => {
               display: 'flex',
               alignItems: 'center',
             }}
-            to={link === 'home' ? '/' : link}
+            to={link === 'home' ? '/' : `/${link}`}
           >
             {link.toUpperCase()}
           </Link>
@@ -91,7 +91,7 @@ const Header = ({ links, logo, backgroundColor }) => {
           onClose={handleClose}
           sx={{ display: 'flex', flexDirection: 'column' }}
         >
-          {links.map(link => (
+          {links.map((link) => (
             <MenuItem
               sx={{ width: '100%' }}
               key={link}

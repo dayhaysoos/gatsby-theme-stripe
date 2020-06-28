@@ -1,24 +1,24 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { useCart } from '../context/shopping-cart'
+import { useShoppingCart, formatCurrencyString } from 'use-shopping-cart'
 import ShoppingCartDetails from './right-pane/shopping-cart-details'
 import { Button } from '@material-ui/core'
 
 const RightPane = () => {
   const {
-    toggleRightMenu,
     handleCartClick,
     redirectToCheckout,
     cartCount,
-  } = useCart()
+    shouldDisplayCart,
+  } = useShoppingCart()
   return (
     <div
-      aria-hidden={toggleRightMenu ? 'false' : 'true'}
+      aria-hidden={shouldDisplayCart ? 'false' : 'true'}
       css={{ overflowY: 'scroll', display: 'flex', flexDiretion: 'row' }}
     >
       <aside
         sx={{
-          variant: toggleRightMenu
+          variant: shouldDisplayCart
             ? 'aside.rightPaneShow'
             : 'aside.rightPaneHidden',
         }}

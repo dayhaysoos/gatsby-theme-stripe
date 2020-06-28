@@ -93,7 +93,8 @@ exports.sourceNodes = async ({
   // create nodeId in the process
   // create type in internal Object
 
-  skuList.data.forEach(sku => {
+  skuList.data.forEach((sku) => {
+    console.log('sku', sku.attributes.name)
     const node = {
       ...sku,
       number_price: sku.price,
@@ -116,7 +117,7 @@ exports.createResolvers = ({ createResolvers }, options) => {
   const basePath = options.basePath || '/'
 
   // Quick-and-dirty helper to convert strings into URL-friendly slugs.
-  const slugify = str => {
+  const slugify = (str) => {
     const slug = str
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, '-')
@@ -129,7 +130,7 @@ exports.createResolvers = ({ createResolvers }, options) => {
   createResolvers({
     StripeSku: {
       slug: {
-        resolve: source => slugify(source.name),
+        resolve: (source) => slugify(source.name),
       },
     },
   })

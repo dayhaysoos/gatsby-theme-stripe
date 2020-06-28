@@ -1,11 +1,12 @@
 /** @jsx jsx */
 import React from 'react'
-import { useCart } from '../context/shopping-cart'
+import { useShoppingCart } from 'use-shopping-cart'
 import { jsx } from 'theme-ui'
 import { FaShoppingCart } from 'react-icons/fa'
 
 const ShoppingCartIcon = () => {
-  const { cartCount, handleCartClick } = useCart()
+  const { cartCount, handleCartClick, shouldDisplayCart } = useShoppingCart()
+
   return (
     <button
       aria-label={'Shopping Cart'}

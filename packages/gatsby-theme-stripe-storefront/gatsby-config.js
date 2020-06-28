@@ -1,4 +1,6 @@
-require('dotenv').config()
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 module.exports = {
   plugins: [
@@ -7,12 +9,12 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
     'gatsby-plugin-stripe',
-    {
-      resolve: 'gatsby-theme-stripe-base',
-      options: {
-        stripePublicKey: process.env.STRIPE_API_PUBLIC,
-      },
-    },
+    // {
+    //   resolve: 'gatsby-theme-stripe-base',
+    //   options: {
+    //     stripePublicKey: process.env.STRIPE_API_PUBLIC,
+    //   },
+    // },
     {
       resolve: 'gatsby-source-filesystem',
       options: {

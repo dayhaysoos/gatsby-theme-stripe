@@ -9,7 +9,7 @@ import Footer from './footer'
 const Layout = ({ children }) => (
   <Box>
     <Header
-      backgroundColor={'transparent'}
+      backgroundColor={'primary'}
       links={['home', 'products', 'about']}
       logo={logo}
     />

@@ -1,13 +1,13 @@
 /** @jsx jsx */
 import React from 'react'
-import { useCart } from '../context/shopping-cart'
+import { useShoppingCart } from 'use-shopping-cart'
 import { jsx, Button } from 'theme-ui'
 
 const AddItemButton = ({ sku }) => {
   const { name } = sku
-  const { addItem } = useCart()
+  const { addItem } = useShoppingCart()
 
-  const handleClick = e => {
+  const handleClick = (e) => {
     e.preventDefault()
     addItem({ ...sku, quantity: 1 })
   }

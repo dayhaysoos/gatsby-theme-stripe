@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React from 'react'
 import { jsx } from 'theme-ui'
-import { useCart } from '../../context/shopping-cart'
+import { useShoppingCart } from 'use-shopping-cart'
 import CheckoutImage from '../right-pane/checkout-image'
 import { FaWindowClose } from 'react-icons/fa'
 import { Formik, FieldArray, Field, Form } from 'formik'
@@ -15,7 +15,7 @@ const ShoppingCartDetails = () => {
     deleteItem,
     handleQuantityChange,
     redirectToCheckout,
-  } = useCart()
+  } = useShoppingCart()
 
   const updateInputValue = (e, skuID) => {
     const { value } = e.target
@@ -25,7 +25,7 @@ const ShoppingCartDetails = () => {
   }
 
   const handleSubmit = async ({ items }) => {
-    await items.forEach(item =>
+    await items.forEach((item) =>
       item.quantity === 0 ? deleteItem(item.sku) : null
     )
 
@@ -129,7 +129,7 @@ const ShoppingCartDetails = () => {
                               type="number"
                               placeholder={'Enter Amount'}
                               name={name}
-                              onChange={e => updateInputValue(e, sku)}
+                              onChange={(e) => updateInputValue(e, sku)}
                               value={quantity}
                               min={0}
                             />
