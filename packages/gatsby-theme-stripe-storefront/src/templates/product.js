@@ -10,6 +10,7 @@ export const query = graphql`
       name
       productID
       images
+      price
       fields {
         price {
           unit_amount

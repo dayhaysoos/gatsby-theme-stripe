@@ -27,7 +27,7 @@ const Product = ({ product }) => {
           <h4>
             {formatCurrencyString({ value: unit_amount, currency: 'usd' })}
           </h4>
-          <Button onClick={() => addItem({ sku: price.priceID })}>
+          <Button onClick={() => addItem({ ...product, sku: price.priceID })}>
             Add To Cart
           </Button>
         </Box>

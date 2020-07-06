@@ -11,8 +11,8 @@ export const wrapRootElement = (
   return (
     <CartProvider
       stripe={stripePromise}
-      successUrl={'https://stripe.com'}
-      cancelUrl={'https://twitter.com/Dayhaysoos'}
+      successUrl={successUrl}
+      cancelUrl={cancelUrl}
       currency="USD"
       allowedCountries={['US', 'GB', 'CA']}
       billingAddressCollection={true}

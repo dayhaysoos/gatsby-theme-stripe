@@ -3,7 +3,10 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const {
+  createFilePath,
+  createRemoteFileNode,
+} = require(`gatsby-source-filesystem`)
 
 const stripe = require('stripe')(process.env.STRIPE_API_SECRET)
 
@@ -28,6 +31,11 @@ exports.createSchemaCustomization = ({ actions }) => {
     currency: String!
     product: Product
     priceID: String
+    unit_amount: Int
+  }
+
+  type ProductFields {
+    price: Price
   }
 
   type Product implements Node {
@@ -46,6 +54,8 @@ exports.createSchemaCustomization = ({ actions }) => {
     updated: Int
     productID: String!
     slug: String
+    fields: ProductFields
+    localImage: String
   }
 
   type Image {
@@ -87,25 +97,41 @@ exports.onCreateNode = async ({
   createNodeId,
   createContentDigest,
   getNode,
+  store,
+  cache,
 }) => {
   // only apply logic to Price nodes
   if (node.internal.type === 'Price' && !products.includes(node.product.id)) {
-    const productNodeId = createNodeId(`Product-${node.product.id}`)
+    const productNodeId = await createNodeId(`Product-${node.product.id}`)
 
+    let fileNode = await createRemoteFileNode({
+      url: node.product.images[0],
+      parentNodeId: productNodeId,
+      createNode,
+      createNodeId,
+      cache,
+      store,
+    })
     //if product isn't in the array, push the id into the array to keep track
-    products.push(node.product.id)
-    createNode({
+    await products.push(node.product.id)
+
+    if (fileNode) {
+      node.localImage___NODE = fileNode.id
+    }
+
+    await createNode({
       ...node.product,
       id: productNodeId,
       productID: node.product.id,
       slug: slugify(node.product.name),
+      price: node.unit_amount,
       internal: {
         type: 'Product',
         contentDigest: createContentDigest(node.product),
       },
     })
 
-    createNodeField({
+    await createNodeField({
       node: getNode(productNodeId),
       name: 'price',
       value: node,
