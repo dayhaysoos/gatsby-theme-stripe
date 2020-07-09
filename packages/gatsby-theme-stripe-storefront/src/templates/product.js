@@ -11,6 +11,21 @@ export const query = graphql`
       productID
       images
       price
+      childFile {
+        childImageSharp {
+          id
+          fluid {
+            base64
+            tracedSVG
+            srcWebp
+            srcSetWebp
+            originalImg
+            originalName
+            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluidLimitPresentationSize
+          }
+        }
+      }
       fields {
         price {
           unit_amount

@@ -55,7 +55,6 @@ exports.createSchemaCustomization = ({ actions }) => {
     productID: String!
     slug: String
     fields: ProductFields
-    localImage: String
   }
 
   type Image {
@@ -93,7 +92,7 @@ let products = []
 
 exports.onCreateNode = async ({
   node,
-  actions: { createNode, createNodeField },
+  actions: { createNode, createNodeField, createParentChildLink },
   createNodeId,
   createContentDigest,
   getNode,
@@ -135,6 +134,11 @@ exports.onCreateNode = async ({
       node: getNode(productNodeId),
       name: 'price',
       value: node,
+    })
+
+    createParentChildLink({
+      parent: getNode(productNodeId),
+      child: getNode(fileNode.id),
     })
   }
 }
